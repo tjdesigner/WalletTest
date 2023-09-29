@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from "styled-components/native"
 
 export default {
   colors: {
@@ -11,7 +11,7 @@ export default {
     primary: "#142995",
     primaryStrong: "#1a8b54",
     secondary: "#12C2E9",
-    tertiary: "#B3EDD4",
+    tertiary: "#A5FF32",
     text: "#000000",
     white: "white",
   },
@@ -92,9 +92,9 @@ export default {
     xxxLarge: 60,
     largestOfAll: 76,
   },
-};
+}
 
-export const getFontWeight = (str: string) => str as React.CSSProperties;
+export const getFontWeight = (str: string) => str as React.CSSProperties
 
 export const ContainerMainPage = styled.View`
   flex: 1;
@@ -102,10 +102,10 @@ export const ContainerMainPage = styled.View`
   padding-top: ${({ theme }) => theme.spaces.large};
   padding-left: ${({ theme }) => theme.spaces.default};
   padding-right: ${({ theme }) => theme.spaces.default};
-`;
+`
 
 interface ScrollMainPageProps {
-  withPadding?: boolean;
+  withPadding?: boolean
 }
 
 export const ScrollMainPageTabbar = styled.ScrollView<ScrollMainPageProps>`
@@ -117,7 +117,7 @@ export const ScrollMainPageTabbar = styled.ScrollView<ScrollMainPageProps>`
   background-color: ${({ theme }) => theme.colors.white};
   padding-top: ${({ theme }) => theme.spaces.default};
   border-radius: ${({ theme }) => theme.spaces.large};
-`;
+`
 
 export const ScrollMainPage = styled.ScrollView<ScrollMainPageProps>`
   flex: 1;
@@ -127,4 +127,4 @@ export const ScrollMainPage = styled.ScrollView<ScrollMainPageProps>`
     props.withPadding ? ({ theme }) => theme.spaces.default : 0};
   background-color: ${({ theme }) => theme.colors.white};
   padding-top: ${({ theme }) => theme.spaces.default};
-`;
+`

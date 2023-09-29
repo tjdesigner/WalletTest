@@ -3,39 +3,41 @@
  * https://reactnavigation.org/docs/typescript/
  */
 
-import { ParamListBase } from "@react-navigation/native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { ParamListBase } from "@react-navigation/native"
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
 
 import type {
   CompositeScreenProps,
   NavigatorScreenParams,
-} from "@react-navigation/native";
-import type { StackScreenProps } from "@react-navigation/stack";
+} from "@react-navigation/native"
+import type { StackScreenProps } from "@react-navigation/stack"
 
 interface Card {
-  id: string;
-  number: string;
-  1;
-  name: string;
-  expirationDate: string;
-  cvv: string;
+  id: string
+  number: string
+  1
+  name: string
+  expirationDate: string
+  cvv: string
 }
 
 /****************************************************/
 
 export type RootStackParamList = {
-  Home: Card;
+  Home: Card
 
   Register: {
-    card?: Card;
-  };
+    card?: Card
+  }
 
-  RegisterConfirmation: undefined;
+  RegisterConfirmation: undefined
 
-  MyCards: {
-    allCards?: Card[];
-  };
-};
+  MyCards:
+    | {
+        allCards?: Card[]
+      }
+    | undefined
+}
 
 declare global {
   namespace ReactNavigation {
@@ -44,4 +46,4 @@ declare global {
 }
 
 export type RootStackScreenProps<ScreenName extends keyof RootStackParamList> =
-  NativeStackScreenProps<RootStackParamList, ScreenName>;
+  NativeStackScreenProps<RootStackParamList, ScreenName>

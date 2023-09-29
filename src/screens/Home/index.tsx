@@ -8,22 +8,22 @@ import {
     View,
 } from "react-native";
 import { v4 as uuidv4 } from "uuid";
-import theme, { ContainerMainPage } from "../../global/styles/theme";
-import { useRoute } from "@react-navigation/native";
 import { RootStackScreenProps } from "../../@types/navigation";
-import { BackgroundTemplateScreen } from "../../components/templates/BackgroundTemplateScreen";
+import { ScreenWithCustomBackgroundComponent } from "../../components/templates/ScreenWithCustomBackground";
+import { ButtonComponent } from "../../components";
+import { WrapperComponent } from "../../components/Wrapper/Wrapper";
+import theme from "../../global/styles/theme";
 
 export const HomeScreen = ({
-    navigation,
-}: RootStackScreenProps<'HomeScreen'>) => {
-    const route = useRoute<"HomeScreen">();
+    route
+}: RootStackScreenProps<'Home'>) => {
     console.log(route);
     useEffect(() => {
         console.log("333", uuidv4());
     }, []);
 
     return (
-        <BackgroundTemplateScreen navigation={undefined} route={undefined}>
+        <ScreenWithCustomBackgroundComponent>
             <View
                 style={{
                     marginTop: Platform.OS === 'android' ? 30 : 64,
@@ -35,10 +35,10 @@ export const HomeScreen = ({
                 <Text style={{ color: "white", fontSize: 20, fontWeight: "400" }}>
                     Wallet Test
                 </Text>
-                <TouchableOpacity onPress={() => navigation.navigate("MyCards")}>
-                    <Text>meus cartões</Text>
-                </TouchableOpacity>
+                <WrapperComponent marginBottom={theme.spacesNumber.default}>
+                    <ButtonComponent fullWidth />
+                </WrapperComponent>
             </View>
-        </BackgroundTemplateScreen>
+        </ScreenWithCustomBackgroundComponent>
     );
 };
