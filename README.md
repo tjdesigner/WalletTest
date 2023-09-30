@@ -52,6 +52,26 @@ Following the doc, you'll be able to run the test json server easily.
 
 [Json Server](https://github.com/typicode/json-server)
 
+But if you follow this path, you too will succeed! Let's go!
+
+### Step 1
+npm install -g json-server
+
+### Step 2
+Create a db.json file with some data
+
+```bash
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}
+```
+### Step 3
 A script has been created in the project to make it easier to start the test server, just run:
 
 ```bash
