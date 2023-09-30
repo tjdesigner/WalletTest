@@ -40,40 +40,41 @@ function App() {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  // const saveApiData = async () => {
-  //   console.log('111', dataItem);
-  //   const newData = {
-  //     id: dataItem.id,
-  //     number: dataItem.number,
-  //     cvv: dataItem.cvv,
-  //     name: dataItem.name,
-  //   };
-  //   console.log('222', newData);
+  const saveApiData = async () => {
+    console.log('111', dataItem);
+    const newData = {
+      id: dataItem.id,
+      number: dataItem.number,
+      cvv: dataItem.cvv,
+      name: dataItem.name,
+    };
+    console.log('222', newData);
 
-  //   const URL = 'http://localhost:3000/cards';
-  //   let result = await fetch(URL, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(newData),
-  //   });
+    const URL = 'http://localhost:3000/cards';
+    let result = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
 
-  //   const dataResult = await result.json();
-  //   return dataResult;
-  // };
+    const dataResult = await result.json();
+    return dataResult;
+  };
 
-  // const getApiData = async () => {
-  //   const URL = 'http://localhost:3000/cards';
-  //   let result = await fetch(URL);
-  //   const dataResult = await result.json();
-  //   setData(dataResult);
-  // };
+  const getApiData = async () => {
+    const URL = 'http://localhost:3000/cards';
+    let result = await fetch(URL);
+    const dataResult = await result.json();
+    setData(dataResult);
+  };
 
   //const handleAddCard = () => { };
 
   useEffect(() => {
-    //getApiData();
+    console.log('333', uuidv4());
+    getApiData();
   }, []);
 
   return (

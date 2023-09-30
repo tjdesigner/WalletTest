@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Platform, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
 import theme, { ContainerMainPage } from '../../global/styles/theme';
 import { Card, RootStackScreenProps } from '../../@types/navigation';
 import { getApiData } from '../../service/api';
 import { evenOrOddNumber } from '../../helpers/utils';
 import { Title } from '../../components/Title/Title';
+import { Wrapper } from '../../components/Wrapper/Wrapper';
 
 const MyCardsScreen = ({
     navigation,
@@ -14,7 +15,7 @@ const MyCardsScreen = ({
     const [data, setData] = useState<Card[]>([]);
     const [dataItem, setDataItem] = useState<Card>({
         id: '',
-        number: '',
+        cardNumber: '',
         cvv: '',
         name: '',
         expirationDate: '',
@@ -33,44 +34,40 @@ const MyCardsScreen = ({
 
 
     return (
-        <ContainerMainPage>
-            <View
+        <>
+            <Wrapper
                 style={{
-                    marginTop: Platform.OS === 'android' ? 30 : 80,
-
+                    marginTop: Platform.OS === 'android' ? 30 : 100,
+                    backgroundColor: theme.colors.primary
                 }}
             >
-                <View style={{
-                    justifyContent: 'flex-end',
+                <Wrapper style={{
+                    justifyContent: 'center',
                     alignSelf: 'stretch',
                     alignItems: 'center',
                     backgroundColor: theme.colors.white,
                     borderBottomLeftRadius: 40,
                     borderBottomRightRadius: 40,
-                    paddingVertical: 16
+                    paddingVertical: 16,
+                    height: 60
                 }}
                 >
                     <Title type='topPage' color={theme.colors.secondary} text='Meus cartões' />
-                </View>
+                </Wrapper>
+            </Wrapper>
 
-                <View
-                    style={{
-                        justifyContent: 'center',
-                        alignItems: "center",
-                        marginHorizontal: theme.spacesNumber.default
-                    }}
-                >
-                    {data.map((e,
-                        i) => {
+            <Wrapper justifyContent='center' alignItems='center' style={{ backgroundColor: theme.colors.primary, flex: 1, position: 'relative' }}>
+                <Wrapper justifyContent='center' alignItems='center'>
+                    {data.map((e, i) => {
                         const number = evenOrOddNumber(i)
                         return (
                             <View style={{
-                                position: 'relative',
                                 backgroundColor: i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black,
                                 padding: theme.spacesNumber.default,
-                                bottom: i === 1 ? 0 : -130,
                                 width: 300,
                                 height: 180,
+                                top: i * -120,
+                                marginBottom: data.length === 2 ? -30 : 0,
                                 borderRadius: theme.spacesNumber.default,
                             }}
                                 key={e.id}
@@ -78,16 +75,16 @@ const MyCardsScreen = ({
                                 <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{i}</Text>
                                 <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.name}</Text>
                                 <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.name}</Text>
-                                <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.number}</Text>
+                                <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.cardNumber}</Text>
                                 <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.cvv}</Text>
                             </View>
                         )
-                    })
-                    }
-                    <Text style={{ color: 'white', marginTop: theme.spacesNumber.default }}>usar este cartão</Text>
-                </View>
-            </View>
-        </ContainerMainPage>
+                    })}
+                    <Text style={{ color: 'white' }}>usar este cartão</Text>
+                </Wrapper>
+            </Wrapper>
+
+        </>
     );
 };
 

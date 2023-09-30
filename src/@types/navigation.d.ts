@@ -14,7 +14,7 @@ import type { StackScreenProps } from "@react-navigation/stack"
 
 interface Card {
   id: string
-  number: string
+  cardNumber: string
   name: string
   expirationDate: string
   cvv: string

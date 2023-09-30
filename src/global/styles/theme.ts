@@ -5,13 +5,14 @@ export default {
     black: "black",
     white: "white",
     danger: "#DC1637",
-    info: "",
+    info: "#12C2E9",
     warning: "#FFE900",
     success: "#2ec64e",
     background: "rgba(238, 238, 238, .2)",
     primary: "#142995",
     secondary: "#12C2E9",
     tertiary: "#A5FF32",
+    light: "#ededed",
   },
 
   fonts: {
@@ -111,6 +112,7 @@ export const ContainerMainPage = styled.View<ContainerMainPageProps>`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.primary};
   padding-top: 17px;
+  justify-content: center;
 `
 
 interface ScrollMainPageProps {

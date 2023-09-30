@@ -2,7 +2,8 @@ import styled from "styled-components/native"
 import theme from "../../global/styles/theme"
 import { TouchableOpacityProps } from "react-native"
 
-const { primary, secondary, tertiary, danger, warning, success } = theme.colors
+const { primary, secondary, tertiary, danger, warning, success, white, black } =
+  theme.colors
 export interface CustomButtonProps extends TouchableOpacityProps {
   fullWidth?: boolean
   backgroundColor?:
@@ -13,6 +14,8 @@ export interface CustomButtonProps extends TouchableOpacityProps {
     | "warning"
     | "danger"
     | "info"
+    | "white"
+    | "black"
 }
 
 export const ButtonContainer = styled.TouchableOpacity<CustomButtonProps>`
@@ -32,13 +35,15 @@ export const ButtonContainer = styled.TouchableOpacity<CustomButtonProps>`
         ? danger
         : props.backgroundColor === "info"
         ? secondary
+        : props.backgroundColor === "white"
+        ? white
+        : props.backgroundColor === "black"
+        ? black
         : primary
       : primary};
   justify-content: center;
   align-items: center;
   align-self: ${(props) => (props.fullWidth ? "stretch" : "center")};
   height: ${theme.spaces.xxxLarge};
-  padding-left: ${theme.spaces.default};
-  padding-right: ${theme.spaces.default};
   border-radius: ${theme.spaces.small};
 `

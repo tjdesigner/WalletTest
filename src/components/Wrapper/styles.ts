@@ -12,9 +12,12 @@ export interface WrapperProps extends ViewProps {
   marginRight?: number
   marginBottom?: number
   marginLeft?: number
+  flexDirection?: "row" | "column"
+  justifyContent?: "center" | "flex-start" | "flex-end"
+  alignItems?: "center" | "flex-start" | "flex-end"
 }
 
-export const WrapperContainer = styled.TouchableOpacity<WrapperProps>`
+export const WrapperContainer = styled.View<WrapperProps>`
   align-self: stretch;
   padding: ${(props) => (props.padding ? props.padding : 0)}px;
   padding-top: ${(props) => (props.paddingTop ? props.paddingTop : 0)}px;
@@ -27,4 +30,30 @@ export const WrapperContainer = styled.TouchableOpacity<WrapperProps>`
   margin-right: ${(props) => (props.marginRight ? props.marginRight : 0)}px;
   margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : 0)}px;
   margin-left: ${(props) => (props.marginLeft ? props.marginLeft : 0)}px;
+  flex-direction: ${(props) =>
+    props.flexDirection
+      ? props.flexDirection === "row"
+        ? "row"
+        : "column"
+      : "column"};
+  justify-content: ${(props) =>
+    props.justifyContent
+      ? props.justifyContent === "flex-start"
+        ? "flex-start"
+        : props.justifyContent === "flex-end"
+        ? "flex-end"
+        : props.justifyContent === "center"
+        ? "center"
+        : "flex-start"
+      : "flex-start"};
+  align-items: ${(props) =>
+    props.alignItems
+      ? props.alignItems === "flex-start"
+        ? "flex-start"
+        : props.alignItems === "flex-end"
+        ? "flex-end"
+        : props.alignItems === "center"
+        ? "center"
+        : "flex-start"
+      : "flex-start"};
 `

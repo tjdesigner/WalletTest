@@ -35,7 +35,6 @@ export const HomeScreen = ({
                     marginRight={theme.spacesNumber.default}
                 >
                     <ButtonComponent
-                        fontWeight="500"
                         textButton="meus cartões"
                         backgroundColor="secondary"
                         fullWidth
@@ -52,7 +51,6 @@ export const HomeScreen = ({
                 >
 
                     <ButtonComponent
-                        fontWeight="500"
                         textButton="cadastrar cartão"
                         backgroundColor="tertiary"
                         fullWidth

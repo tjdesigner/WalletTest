@@ -18,8 +18,9 @@ export const ButtonComponent = ({ ...props }: ButtonTextProps) => (
         <Text
             style={{
                 color: props.color ? props.color : theme.colors.primary,
-                fontWeight: props.fontWeight ? props.fontWeight : 'normal',
-                fontSize: props.fontSize ? props.fontSize : theme.fontSizeNumber.specific,
+                fontWeight: props.fontWeight ? props.fontWeight : '100',
+                fontSize: theme.fontSizeNumber.specific,
+                fontFamily: theme.fonts.family.regular
             }}>{props.textButton}</Text>
     </ButtonContainer>
 );
