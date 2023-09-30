@@ -13,20 +13,6 @@
       "cvv": "F",
       "name": "Asdf asdf asdf asdfa",
       "expirationDate": "Sdfasd"
-    },
-    {
-      "id": "e2eebe6f-24f1-4141-9292-5a031a4b9a89",
-      "cardNumber": "123 1234 1234 1234 ",
-      "name": "Tiago de Jesus",
-      "expirationDate": "12\\23",
-      "cvv": "753"
-    },
-    {
-      "id": "72214adb-f845-47e7-9711-4de49594c25a",
-      "cardNumber": "234234234234",
-      "name": "Tiago de Jesus",
-      "expirationDate": "12\\23",
-      "cvv": "753"
     }
   ]
 }
