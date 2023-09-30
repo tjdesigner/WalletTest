@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
 import * as yup from 'yup'
+import { v4 as uuidv4 } from "uuid"
 import { ButtonComponent, ScreenWithCustomBackgroundComponent } from '../../components';
 import theme, { ContainerMainPage } from '../../global/styles/theme';
 import { saveApiData } from '../../service/api';
@@ -12,42 +13,42 @@ import { useForm } from 'react-hook-form';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { showWidthScreen } from '../../helpers/utils';
 import { IconButtonComponent } from '../../components/IconButton/IconButton';
+import { Title } from '../../components/Title/Title';
 
 const cardSchema = yup.object({
     id: yup
         .string()
-        .required(),
+    ,
     cardNumber: yup
         .string()
-        .required(),
+        .required()
+    ,
     name: yup
         .string()
-        .required(),
+        .required()
+    ,
     expirationDate: yup
         .string()
-        .required(),
+        .required()
+    ,
     cvv: yup
         .string()
-        .required(),
+        .required()
+    ,
 })
 
-const RegisterScreen = ({ }: RootStackScreenProps<'Register'>) => {
+const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
     const [data, setData] = useState<Card[]>([]);
-    const [dataItem, setDataItem] = useState<Card>({
-        id: '',
-        cardNumber: '',
-        cvv: '',
-        name: '',
-        expirationDate: ''
-    });
+    const { handleSubmit, control, formState: { errors } } = useForm({ resolver: yupResolver(cardSchema) })
 
-    const { control: cardControl, handleSubmit: handleCardSubmit, formState: { errors: errorsCard }, reset: resetCard } = useForm<Card>({
-        resolver: yupResolver(cardSchema)
-    })
-
-    useEffect(() => {
-        console.log('333', dataItem);
-    }, [dataItem]);
+    const onSubmit = () => {
+        const result = handleSubmit(async (data) => await saveApiData(data).then(res => {
+            navigation.navigate('RegisterConfirmation', {
+                card: res
+            })
+        }))
+        return result()
+    }
 
     return (
         <ScreenWithCustomBackgroundComponent>
@@ -57,13 +58,8 @@ const RegisterScreen = ({ }: RootStackScreenProps<'Register'>) => {
                 alignItems: 'center',
                 paddingHorizontal: theme.spacesNumber.large
             }}>
-                <Wrapper>
-                    {data.length
-                        ? data?.map(item => {
-                            return <Text key={item.id}>{item.cardNumber}</Text>;
-                        })
-                        : null}
-                </Wrapper>
+
+                <Title marginBottom={theme.spacesNumber.medium} text='Wallet Test' color={theme.colors.white} type={'contentPage'} />
 
                 <ControlledInput
                     icon={<IconButtonComponent backgroundColor={theme.colors.secondary} type='icon-material' name='enhance-photo-translate' color={theme.colors.white} size={30} />}
@@ -71,17 +67,15 @@ const RegisterScreen = ({ }: RootStackScreenProps<'Register'>) => {
                     label='Número do cartão'
                     clearButtonMode='always'
                     name="cardNumber"
-                    onChangeText={(cardNumber) => setDataItem({ ...dataItem, cardNumber })}
-                    control={cardControl}
-                    error={errorsCard.cardNumber} />
+                    control={control}
+                    error={errors.cardNumber} />
 
                 <ControlledInput
                     label='nome do titular do cartão'
                     clearButtonMode='always'
                     name="name"
-                    onChangeText={(name) => setDataItem({ ...dataItem, name })}
-                    control={cardControl}
-                    error={errorsCard.name} />
+                    control={control}
+                    error={errors.name} />
 
                 <Wrapper
                     flexDirection='row'
@@ -95,9 +89,8 @@ const RegisterScreen = ({ }: RootStackScreenProps<'Register'>) => {
                             label='vencimento'
                             clearButtonMode='always'
                             name="expirationDate"
-                            onChangeText={(expirationDate) => setDataItem({ ...dataItem, expirationDate })}
-                            control={cardControl}
-                            error={errorsCard.expirationDate} />
+                            control={control}
+                            error={errors.expirationDate} />
                     </Wrapper>
 
                     <Wrapper style={{ width: showWidthScreen * .5 - theme.spacesNumber.large2 }}>
@@ -105,16 +98,15 @@ const RegisterScreen = ({ }: RootStackScreenProps<'Register'>) => {
                             label='código de segurança'
                             clearButtonMode='always'
                             name="cvv"
-                            onChangeText={(cvv) => setDataItem({ ...dataItem, cvv })}
-                            control={cardControl}
-                            error={errorsCard.cvv} />
+                            control={control}
+                            error={errors.cvv} />
                     </Wrapper>
                 </Wrapper>
                 <Wrapper
                     marginLeft={theme.spacesNumber.xs}
                     marginRight={theme.spacesNumber.xs}
                 >
-                    <ButtonComponent onPress={async () => handleCardSubmit(await saveApiData(dataItem))} activeOpacity={.7} backgroundColor='white' fullWidth textButton='avançar' />
+                    <ButtonComponent onPress={onSubmit} activeOpacity={.7} backgroundColor='white' fullWidth textButton='avançar' />
                 </Wrapper>
             </ContainerMainPage>
         </ScreenWithCustomBackgroundComponent>

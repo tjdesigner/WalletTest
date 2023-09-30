@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import { Alert, TouchableOpacity, View } from "react-native";
 import { IconButtonComponent } from "../components/IconButton/IconButton";
 import { useNavigation } from "@react-navigation/native";
+import { LoadingAnimation } from "../screens/LoadingAnimation/LoadingAnimation";
 
 const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -47,8 +48,7 @@ export function StackRoutes() {
                             color={theme.colors.secondary}
                             name="plus"
                             size={24}
-                            onPress={() => navigation.navigate('Register')}
-                        />
+                            onPress={() => navigation.navigate('Register')} type={"icon-feather"} />
                 }}
                 name="MyCards"
                 component={MyCards}
@@ -67,6 +67,11 @@ export function StackRoutes() {
                 options={{ headerTitle: 'Criar Lista' }}
                 name="RegisterConfirmation"
                 component={RegisterConfirmation}
+            />
+            <HomeStack.Screen
+                options={{ headerTitle: 'Criar Lista' }}
+                name="LoadingAnimation"
+                component={LoadingAnimation}
             />
 
         </HomeStack.Navigator>

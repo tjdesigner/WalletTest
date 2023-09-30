@@ -13,7 +13,7 @@ import type {
 import type { StackScreenProps } from "@react-navigation/stack"
 
 interface Card {
-  id: string
+  id?: string
   cardNumber: string
   name: string
   expirationDate: string
@@ -31,7 +31,13 @@ export type RootStackParamList = {
       }
     | undefined
 
-  RegisterConfirmation: undefined
+  RegisterConfirmation:
+    | {
+        card: Card
+      }
+    | undefined
+
+  LoadingAnimation: undefined
 
   MyCards:
     | {

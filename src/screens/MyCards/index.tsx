@@ -25,13 +25,11 @@ const MyCardsScreen = ({
         let data = await getApiData()
         setData(data)
         console.log('111', data);
-
     }
 
     useEffect(() => {
         getData()
     }, []);
-
 
     return (
         <>
@@ -58,28 +56,29 @@ const MyCardsScreen = ({
 
             <Wrapper justifyContent='center' alignItems='center' style={{ backgroundColor: theme.colors.primary, flex: 1, position: 'relative' }}>
                 <Wrapper justifyContent='center' alignItems='center'>
-                    {data.map((e, i) => {
-                        const number = evenOrOddNumber(i)
-                        return (
-                            <View style={{
-                                backgroundColor: i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black,
-                                padding: theme.spacesNumber.default,
-                                width: 300,
-                                height: 180,
-                                top: i * -120,
-                                marginBottom: data.length === 2 ? -30 : 0,
-                                borderRadius: theme.spacesNumber.default,
-                            }}
-                                key={e.id}
-                            >
-                                <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{i}</Text>
-                                <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.name}</Text>
-                                <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.name}</Text>
-                                <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.cardNumber}</Text>
-                                <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.cvv}</Text>
-                            </View>
-                        )
-                    })}
+                    <ScrollView style={{ paddingVertical: 32 }}>
+                        {data.map((e, i) => {
+                            const number = evenOrOddNumber(i)
+                            return (
+                                <View style={{
+                                    backgroundColor: i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black,
+                                    padding: theme.spacesNumber.default,
+                                    width: 300,
+                                    height: 180,
+                                    marginBottom: data.length === 2 ? -40 : 0,
+                                    borderRadius: theme.spacesNumber.default,
+                                }}
+                                    key={e.id}
+                                >
+                                    <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{i}</Text>
+                                    <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.name}</Text>
+                                    <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.name}</Text>
+                                    <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.cardNumber}</Text>
+                                    <Text style={{ color: i !== 0 || number === 'impar' ? '#FFFFFF' : '#000000' }}>{e.cvv}</Text>
+                                </View>
+                            )
+                        })}
+                    </ScrollView>
                     <Text style={{ color: 'white' }}>usar este cartão</Text>
                 </Wrapper>
             </Wrapper>

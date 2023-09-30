@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react'
 import { Control, FieldError, Controller } from 'react-hook-form'
-
 import { ControllerContainer, ControllerContainerProps, Error, InputContainer, InputText, TextLabel } from './styles'
 import theme from '../../global/styles/theme'
 
@@ -28,6 +27,7 @@ export function ControlledInput({ control, error, name, ...rest }: DefaultProps)
                             {...rest}
                             placeholderTextColor={theme.colors.light}
                         />
+                        {console.log(name, value)}
                     </InputContainer>
                 )}
             />

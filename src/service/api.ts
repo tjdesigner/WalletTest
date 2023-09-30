@@ -6,10 +6,10 @@ const baseURL = "http://localhost:3000"
 export const saveApiData = async ({ ...props }: Card) => {
   const newData: Card = {
     id: uuidv4(),
-    cardNumber: props.name,
-    cvv: props.cvv,
+    cardNumber: props.cardNumber,
     name: props.name,
     expirationDate: props.expirationDate,
+    cvv: props.cvv,
   }
 
   let result = await fetch(`${baseURL}/cards`, {
@@ -20,7 +20,10 @@ export const saveApiData = async ({ ...props }: Card) => {
     body: JSON.stringify(newData),
   })
 
-  console.log(result)
+  const res = result.json()
+  console.log("2222", JSON.stringify(await res))
+
+  return res
 }
 
 export const getApiData = async () => {

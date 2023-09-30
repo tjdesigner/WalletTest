@@ -78,6 +78,7 @@ function App() {
   }, []);
 
   return (
+
     <ThemeProvider theme={theme}>
       <StatusBar
         barStyle={'light-content'}
@@ -85,42 +86,7 @@ function App() {
         translucent={true}
         animated={true}
       />
-      {/* <SafeAreaView
-        style={[
-          backgroundStyle,
-          { flex: 1, backgroundColor: theme.colors.primary },
-        ]}
-      > */}
       <Routes />
-
-      {/* <View>
-          {data.length
-            ? data?.map(item => {
-              return <Text key={item.id}>{item.number}</Text>;
-            })
-            : null}
-        </View>
-        <TextInput
-          value={dataItem.number}
-          placeholder="Number of Card"
-          onChangeText={value => setDataItem({ ...dataItem, number: value })}
-        />
-        <TextInput
-          value={dataItem.cvv}
-          placeholder="CVC of Card"
-          onChangeText={value =>
-            setDataItem({ ...dataItem, cvv: value.toString() })
-          }
-        />
-        <TextInput
-          value={dataItem.name}
-          placeholder="Name of Card"
-          onChangeText={value => setDataItem({ ...dataItem, name: value })}
-        />
-        <TouchableOpacity onPress={saveApiData}>
-          <Text>Add Card</Text>
-        </TouchableOpacity> */}
-      {/* </SafeAreaView> */}
     </ThemeProvider>
   );
 }
