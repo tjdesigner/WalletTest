@@ -16,7 +16,6 @@ export function ControlledInput({ control, error, name, ...rest }: DefaultProps)
     return (
         <ControllerContainer>
             {Boolean(rest.label) && <TextLabel>{rest.label}</TextLabel>}
-
             <Controller
                 name={name}
                 control={control}
@@ -24,9 +23,12 @@ export function ControlledInput({ control, error, name, ...rest }: DefaultProps)
                     <InputContainer>
                         {Boolean(rest.icon) && rest.icon}
                         <InputText
+                            onChangeText={onChange}
+                            value={value}
                             {...rest}
                             placeholderTextColor={theme.colors.light}
-                        /></InputContainer>
+                        />
+                    </InputContainer>
                 )}
             />
             {error && <Error>{error.message}</Error>}
