@@ -15,10 +15,6 @@ import { Title } from "../../components/Title/Title";
 export const HomeScreen = ({
     navigation, route
 }: RootStackScreenProps<'Home'>) => {
-    console.log(route);
-    useEffect(() => {
-        console.log("333", uuidv4());
-    }, []);
 
     return (
         <ScreenWithCustomBackgroundComponent>
@@ -31,9 +27,13 @@ export const HomeScreen = ({
                 }}
             >
 
-                <Title color={theme.colors.white} text="Wallet Test" />
+                <Title marginBottom={theme.spacesNumber.large} type="contentPage" color={theme.colors.white} text="Wallet Test" />
 
-                <Wrapper marginBottom={theme.spacesNumber.default}>
+                <Wrapper
+                    marginLeft={theme.spacesNumber.medium}
+                    marginBottom={theme.spacesNumber.default}
+                    marginRight={theme.spacesNumber.default}
+                >
                     <ButtonComponent
                         fontWeight="500"
                         textButton="meus cartões"
@@ -45,7 +45,12 @@ export const HomeScreen = ({
                     />
                 </Wrapper>
 
-                <Wrapper>
+                <Wrapper
+                    marginLeft={theme.spacesNumber.medium}
+                    marginBottom={theme.spacesNumber.default}
+                    marginRight={theme.spacesNumber.default}
+                >
+
                     <ButtonComponent
                         fontWeight="500"
                         textButton="cadastrar cartão"

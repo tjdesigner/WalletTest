@@ -6,10 +6,15 @@ import Register from "../screens/Register";
 import RegisterConfirmation from "../screens/RegisterConfirmation";
 import MyCards from "../screens/MyCards";
 import { HomeScreen } from "../screens";
+import Icon from 'react-native-vector-icons/Feather';
+import { Alert, TouchableOpacity, View } from "react-native";
+import { IconButtonComponent } from "../components/IconButton/IconButton";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
 export function StackRoutes() {
+    const navigation = useNavigation()
     return (
         <HomeStack.Navigator
             initialRouteName="Home"
@@ -29,8 +34,21 @@ export function StackRoutes() {
                 options={{
                     headerShown: true,
                     headerTransparent: true,
-                    headerStyle: { backgroundColor: "white" },
                     headerBackTitleVisible: false,
+                    headerTitleStyle: { color: theme.colors.primary },
+                    headerTintColor: theme.colors.secondary,
+                    headerShadowVisible: true,
+                    headerStyle: {
+                        backgroundColor: "white",
+                    },
+
+                    headerRight: () =>
+                        <IconButtonComponent
+                            color={theme.colors.secondary}
+                            name="plus"
+                            size={24}
+                            onPress={() => navigation.navigate('Register')}
+                        />
                 }}
                 name="MyCards"
                 component={MyCards}

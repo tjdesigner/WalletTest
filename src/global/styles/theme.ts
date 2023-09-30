@@ -50,6 +50,7 @@ export default {
     xxLarge: `${48}px`,
     xxxLarge: `${60}px`,
     veryLarge: `${76}px`,
+    titlePage: `${20}px`,
     title: `${28}px`,
     specific: `${18}px`,
   },
@@ -65,6 +66,7 @@ export default {
     xxLarge: 48,
     xxxLarge: 60,
     veryLarge: 76,
+    titlePage: 20,
     title: 28,
     specific: 18,
   },
@@ -108,9 +110,7 @@ interface ContainerMainPageProps {
 export const ContainerMainPage = styled.View<ContainerMainPageProps>`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.primary};
-  padding-top: ${({ theme }) => theme.spaces.large};
-  padding-left: ${({ theme }) => theme.spaces.medium};
-  padding-right: ${({ theme }) => theme.spaces.medium};
+  padding-top: 17px;
 `
 
 interface ScrollMainPageProps {

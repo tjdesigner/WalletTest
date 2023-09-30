@@ -1,6 +1,5 @@
 import styled from "styled-components/native"
 import theme from "../../global/styles/theme"
-import { ViewProps } from "react-native"
 
 export const BackgroundTopPosition = styled.View`
   position: absolute;
