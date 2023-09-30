@@ -3,24 +3,23 @@ import styled from "styled-components/native"
 export default {
   colors: {
     black: "black",
+    white: "white",
     danger: "#DC1637",
-    grey: "rgba(0, 0, 0, 0.5)",
-    light: "rgba(0, 0, 0, 0.08)",
-    overlay: "rgba(0, 0, 0, 0.2)",
+    info: "",
+    warning: "#FFE900",
+    success: "#2ec64e",
     background: "rgba(238, 238, 238, .2)",
     primary: "#142995",
-    primaryStrong: "#1a8b54",
     secondary: "#12C2E9",
     tertiary: "#A5FF32",
-    text: "#000000",
-    white: "white",
   },
 
   fonts: {
     family: {
-      regular: "Poppins_400Regular",
-      medium: "Poppins_500Medium",
-      bold: "Poppins_700Bold",
+      regular: "PTSans-Regular",
+      italic: "PTSans-Italic",
+      boldItalic: "PTSans-BoldItalic",
+      bold: "PTSans-Bold",
     },
     weight: {
       normal: "normal",
@@ -50,20 +49,9 @@ export default {
     xLarge: `${44}px`,
     xxLarge: `${48}px`,
     xxxLarge: `${60}px`,
-  },
-  spaces: {
-    xxs: `${2}px`,
-    xs: `${4}px`,
-    small: `${8}px`,
-    default: `${16}px`,
-    medium: `${24}px`,
-    large: `${32}px`,
-    large2: `${36}px`,
-    large3: `${40}px`,
-    xLarge: `${44}px`,
-    xxLarge: `${48}px`,
-    xxxLarge: `${60}px`,
-    largestOfAll: `${76}px`,
+    veryLarge: `${76}px`,
+    title: `${28}px`,
+    specific: `${18}px`,
   },
   fontSizeNumber: {
     xxxs: 1,
@@ -76,7 +64,25 @@ export default {
     xLarge: 44,
     xxLarge: 48,
     xxxLarge: 60,
-    largestOfAll: 76,
+    veryLarge: 76,
+    title: 28,
+    specific: 18,
+  },
+  spaces: {
+    xxs: `${2}px`,
+    xs: `${4}px`,
+    small: `${8}px`,
+    default: `${16}px`,
+    medium: `${20}px`,
+    medium2: `${24}px`,
+    medium3: `${28}px`,
+    large: `${32}px`,
+    large2: `${36}px`,
+    large3: `${40}px`,
+    xLarge: `${44}px`,
+    xxLarge: `${48}px`,
+    xxxLarge: `${54}px`,
+    veryLarge: `${76}px`,
   },
   spacesNumber: {
     xxs: 2,
@@ -90,18 +96,21 @@ export default {
     xLarge: 44,
     xxLarge: 48,
     xxxLarge: 60,
-    largestOfAll: 76,
+    veryLarge: 76,
   },
 }
 
-export const getFontWeight = (str: string) => str as React.CSSProperties
+interface ContainerMainPageProps {
+  justifyContent: string
+  alignItems: string
+}
 
-export const ContainerMainPage = styled.View`
+export const ContainerMainPage = styled.View<ContainerMainPageProps>`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.primary};
   padding-top: ${({ theme }) => theme.spaces.large};
-  padding-left: ${({ theme }) => theme.spaces.default};
-  padding-right: ${({ theme }) => theme.spaces.default};
+  padding-left: ${({ theme }) => theme.spaces.medium};
+  padding-right: ${({ theme }) => theme.spaces.medium};
 `
 
 interface ScrollMainPageProps {

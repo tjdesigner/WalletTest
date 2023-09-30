@@ -6,7 +6,7 @@ import { RootStackScreenProps } from '../../@types/navigation';
 
 const MyCardsScreen = ({
     navigation,
-}: RootStackScreenProps<'MyCardsScreen'>) => {
+}: RootStackScreenProps<'MyCards'>) => {
     useEffect(() => {
         console.log('333', uuidv4());
     }, []);

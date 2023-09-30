@@ -25,17 +25,6 @@ export function StackRoutes() {
                 name="Home"
                 component={HomeScreen}
             />
-
-            <HomeStack.Screen
-                options={{ headerTitle: 'Cadastro' }}
-                name="Register"
-                component={Register}
-            />
-            <HomeStack.Screen
-                options={{ headerTitle: 'Criar Lista' }}
-                name="RegisterConfirmation"
-                component={RegisterConfirmation}
-            />
             <HomeStack.Screen
                 options={{
                     headerShown: true,
@@ -46,6 +35,22 @@ export function StackRoutes() {
                 name="MyCards"
                 component={MyCards}
             />
+            <HomeStack.Screen
+                options={{
+                    headerTitle: 'Cadastro',
+                    headerBackTitleVisible: false,
+                    headerTintColor: theme.colors.secondary,
+                    headerStyle: { backgroundColor: 'transparent' }
+                }}
+                name="Register"
+                component={Register}
+            />
+            <HomeStack.Screen
+                options={{ headerTitle: 'Criar Lista' }}
+                name="RegisterConfirmation"
+                component={RegisterConfirmation}
+            />
+
         </HomeStack.Navigator>
     );
 }

@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
 import {
-    Dimensions,
     Platform,
-    StyleSheet,
     Text,
-    TouchableOpacity,
     View,
 } from "react-native";
 import { v4 as uuidv4 } from "uuid";
 import { RootStackScreenProps } from "../../@types/navigation";
 import { ScreenWithCustomBackgroundComponent } from "../../components/templates/ScreenWithCustomBackground";
 import { ButtonComponent } from "../../components";
-import { WrapperComponent } from "../../components/Wrapper/Wrapper";
+import { Wrapper } from "../../components/Wrapper/Wrapper";
 import theme from "../../global/styles/theme";
+import { Title } from "../../components/Title/Title";
 
 export const HomeScreen = ({
-    route
+    navigation, route
 }: RootStackScreenProps<'Home'>) => {
     console.log(route);
     useEffect(() => {
@@ -32,12 +30,31 @@ export const HomeScreen = ({
                     alignItems: "center",
                 }}
             >
-                <Text style={{ color: "white", fontSize: 20, fontWeight: "400" }}>
-                    Wallet Test
-                </Text>
-                <WrapperComponent marginBottom={theme.spacesNumber.default}>
-                    <ButtonComponent fullWidth />
-                </WrapperComponent>
+
+                <Title color={theme.colors.white} text="Wallet Test" />
+
+                <Wrapper marginBottom={theme.spacesNumber.default}>
+                    <ButtonComponent
+                        fontWeight="500"
+                        textButton="meus cartões"
+                        backgroundColor="secondary"
+                        fullWidth
+                        activeOpacity={.7}
+                        onPress={() => navigation.navigate('MyCards')}
+                        color={theme.colors.white}
+                    />
+                </Wrapper>
+
+                <Wrapper>
+                    <ButtonComponent
+                        fontWeight="500"
+                        textButton="cadastrar cartão"
+                        backgroundColor="tertiary"
+                        fullWidth
+                        activeOpacity={.7}
+                        onPress={() => navigation.navigate('Register')}
+                    />
+                </Wrapper>
             </View>
         </ScreenWithCustomBackgroundComponent>
     );

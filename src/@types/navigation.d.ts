@@ -24,11 +24,13 @@ interface Card {
 /****************************************************/
 
 export type RootStackParamList = {
-  Home: Card
+  Home: Card | undefined
 
-  Register: {
-    card?: Card
-  }
+  Register:
+    | {
+        card?: Card
+      }
+    | undefined
 
   RegisterConfirmation: undefined
 
