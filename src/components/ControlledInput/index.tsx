@@ -27,7 +27,6 @@ export function ControlledInput({ control, error, name, ...rest }: DefaultProps)
                             {...rest}
                             placeholderTextColor={theme.colors.light}
                         />
-                        {console.log(name, value)}
                     </InputContainer>
                 )}
             />
