@@ -13,7 +13,12 @@ export interface WrapperProps extends ViewProps {
   marginBottom?: number
   marginLeft?: number
   flexDirection?: "row" | "column"
-  justifyContent?: "center" | "flex-start" | "flex-end"
+  justifyContent?:
+    | "center"
+    | "flex-start"
+    | "flex-end"
+    | "space-around"
+    | "space-between"
   alignItems?: "center" | "flex-start" | "flex-end"
 }
 

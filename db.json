@@ -2,80 +2,17 @@
   "cards": [
     {
       "id": "4ec42ba9-50af-40d2-af90-8312edbd9ca2",
-      "number": "3529 5435 3355 8727",
+      "cardNumber": "3529 5435 3355 8727",
       "cvv": "317",
       "name": "John Doe",
       "expirationDate": "10/30"
     },
     {
-      "id": "2a20f912-654e-49ce-826b-d9a21691b9fa",
-      "cardNumber": "Asdf asdf asdf asdfa",
-      "cvv": "F",
-      "name": "Asdf asdf asdf asdfa",
-      "expirationDate": "Sdfasd"
-    },
-    {
-      "id": "ac232c7d-00d9-4322-90f5-66e80bd70aeb",
-      "cardNumber": "1234 1234 1234 124",
-      "name": "Asdf asdf asdf asdf ",
-      "expirationDate": "1233",
+      "id": "fd84f00b-47fc-4def-9ab5-f7a98a7ac7da",
+      "cardNumber": "1234 1234 1234 1234",
+      "name": "Tiago de Jesus Susa Gama",
+      "expirationDate": "12/23",
       "cvv": "123"
-    },
-    {
-      "id": "e277adfc-892c-4cb1-b1d5-53bf9c3a6742",
-      "cardNumber": "Asdf asdf a",
-      "name": "Sdf ",
-      "expirationDate": "Asdf",
-      "cvv": "Asdf"
-    },
-    {
-      "id": "0a61d088-6c59-4438-b9a0-8993758e10e9",
-      "cardNumber": "Asd asdf ",
-      "name": "Asdf asdf ",
-      "expirationDate": "Asdf ",
-      "cvv": "Asdf "
-    },
-    {
-      "id": "6e7d2b5c-ce54-4a59-9bba-26054ee4d4ff",
-      "cardNumber": "Asd asdf ",
-      "name": "Asdf asdf ",
-      "expirationDate": "Asdf ",
-      "cvv": "Asdf asd"
-    },
-    {
-      "id": "3d8b6ce5-00ca-4441-bf0c-b6ef7d3515c2",
-      "cardNumber": "Asd asdf ",
-      "name": "Asdf asdf ",
-      "expirationDate": "Asdf ",
-      "cvv": "Asdf asd"
-    },
-    {
-      "id": "78cca445-8c9f-4527-ae57-20738d6d4b21",
-      "cardNumber": "Asd asdf ",
-      "name": "Asdf asdf ",
-      "expirationDate": "Asdf ",
-      "cvv": "Asdf asd"
-    },
-    {
-      "id": "fb5fd686-650d-4217-85b5-53592e2f16e2",
-      "cardNumber": "Asd asdf ",
-      "name": "Asdf asdf ",
-      "expirationDate": "Asdf ",
-      "cvv": "Asdf asd"
-    },
-    {
-      "id": "9909cc55-d6dc-49a0-bde3-a1bc24112adf",
-      "cardNumber": "Asd asdf ",
-      "name": "Asdf asdf ",
-      "expirationDate": "Asdf ",
-      "cvv": "Asdf asd"
-    },
-    {
-      "id": "0c908170-4816-4e0a-bfe2-de6eeed85840",
-      "cardNumber": "Asd asdf ",
-      "name": "Asdf asdf ",
-      "expirationDate": "Asdf ",
-      "cvv": "Asdf asd"
     }
   ]
 }
