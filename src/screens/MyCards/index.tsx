@@ -10,6 +10,7 @@ import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { CardAnimationItem } from '../../components/CardAnimation/ CardAnimation';
 import { useSharedValue } from 'react-native-reanimated'
 import ScreenDefault from '../../components/templates/ScreenDefault';
+import { CARD_NAME } from '../../helpers/constants';
 
 const MyCardsScreen = ({
     navigation,
@@ -34,7 +35,7 @@ const MyCardsScreen = ({
             {data.map((e, i) => {
                 const number = evenOrOddNumber(i)
                 return <CardAnimationItem
-                    cardName={number === 'impar' ? 'Black Card' : 'Green Card'}
+                    cardName={number === 'impar' ? CARD_NAME.BLACK : CARD_NAME.GREEN}
                     textColor={i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black}
                     backgroundColor={i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black}
                     key={e.id}

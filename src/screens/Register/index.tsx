@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
+import { Masks } from 'react-native-mask-input';
+
 import theme, { ContainerMainPage } from '../../global/styles/theme';
 import { getApiData, saveApiData } from '../../service/api';
 import { Card, RootStackScreenProps } from '../../@types/navigation';
@@ -81,7 +83,7 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
 
                 <ControlledInput
                     icon={<IconButtonComponent backgroundColor={theme.colors.secondary} type='icon-material' name='enhance-photo-translate' color={theme.colors.white} size={30} />}
-
+                    mask={Masks.CREDIT_CARD}
                     label='Número do cartão'
                     clearButtonMode='always'
                     name="cardNumber"
@@ -104,6 +106,7 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                             marginRight: theme.spacesNumber.small
                         }}>
                         <ControlledInput
+                            mask={Masks.DATE_DDMMYYYY}
                             label='vencimento'
                             clearButtonMode='always'
                             name="expirationDate"
