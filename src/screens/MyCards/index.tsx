@@ -7,7 +7,7 @@ import { getApiData } from '../../service/api';
 import { evenOrOddNumber, maskHideNumbers, showHeightScreen, showWidthScreen } from '../../helpers/utils';
 import { Title } from '../../components/Title/Title';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
-import { CardAnimationItem } from '../../components/componentsAnimation/ CardAnimation';
+import { CardAnimationItem } from '../../components/CardAnimation/ CardAnimation';
 import { useSharedValue } from 'react-native-reanimated'
 
 const MyCardsScreen = ({
