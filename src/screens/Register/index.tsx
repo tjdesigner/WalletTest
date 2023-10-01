@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
 import * as yup from 'yup'
-import { v4 as uuidv4 } from "uuid"
-import { ButtonComponent, ScreenWithCustomBackgroundComponent } from '../../components';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup'
 import theme, { ContainerMainPage } from '../../global/styles/theme';
-import { saveApiData } from '../../service/api';
+import { getApiData, saveApiData } from '../../service/api';
 import { Card, RootStackScreenProps } from '../../@types/navigation';
 import { ControlledInput } from '../../components/ControlledInput';
-import { InferType } from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useForm } from 'react-hook-form';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
-import { showWidthScreen } from '../../helpers/utils';
+import { evenOrOddNumber, showWidthScreen } from '../../helpers/utils';
+import { ButtonComponent, ScreenWithCustomBackgroundComponent } from '../../components';
 import { IconButtonComponent } from '../../components/IconButton/IconButton';
 import { Title } from '../../components/Title/Title';
+import { CARD_NAME } from '../../helpers/constants';
 
 const cardSchema = yup.object({
     id: yup
@@ -38,17 +36,37 @@ const cardSchema = yup.object({
 })
 
 const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
-    const [data, setData] = useState<Card[]>([]);
+    const [newCard, setNewCard] = useState<Card[]>([]);
+    const [fromDatabase, setFromDatabase] = useState<Card[]>([]);
     const { handleSubmit, control, formState: { errors } } = useForm({ resolver: yupResolver(cardSchema) })
 
+    const getData = async () => {
+        let data = await getApiData()
+        console.log('111', data);
+        console.log('222', data.length)
+        console.log('333', evenOrOddNumber(data.length));
+        setFromDatabase(data)
+    }
+
     const onSubmit = () => {
-        const result = handleSubmit(async (data) => await saveApiData(data).then(res => {
+        const result = handleSubmit(async (data: Card) => await saveApiData(data).then(res => {
             navigation.navigate('RegisterConfirmation', {
-                card: res
+                card: {
+                    id: res.id,
+                    cardName: evenOrOddNumber(fromDatabase.length) === 'par' ? CARD_NAME.GREEN : CARD_NAME.BLACK,
+                    name: res.name,
+                    cardNumber: res.cardNumber,
+                    expirationDate: res.expirationDate,
+                    cvv: res.cvv,
+                }
             })
         }))
         return result()
     }
+
+    useEffect(() => {
+        getData()
+    }, []);
 
     return (
         <ScreenWithCustomBackgroundComponent>
@@ -106,7 +124,7 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                     marginLeft={theme.spacesNumber.xs}
                     marginRight={theme.spacesNumber.xs}
                 >
-                    <ButtonComponent onPress={onSubmit} activeOpacity={.7} backgroundColor='white' fullWidth textButton='avançar' />
+                    <ButtonComponent onPress={onSubmit} backgroundColor='white' fullWidth textButton='avançar' />
                 </Wrapper>
             </ContainerMainPage>
         </ScreenWithCustomBackgroundComponent>

@@ -1,2 +1,2 @@
 export * from "./Button/Button"
-export * from "./templates/ScreenWithCustomBackground"
+export * from "./templates/ScreenWithCustomBackground/ScreenWithCustomBackground"

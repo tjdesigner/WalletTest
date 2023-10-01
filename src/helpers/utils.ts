@@ -8,8 +8,8 @@ export const evenOrOddNumber = (index: number) => {
   }
 }
 
-export const maskHideNumbers = (str: string) => {
-  return str.replace(/\d{4}(?= \d{4})/g, "****")
+export const maskHideNumbers = (str?: string) => {
+  return str?.replace(/\d{4}(?= \d{4})/g, "****")
 }
 
 export const showWidthScreen = Dimensions.get("window").width

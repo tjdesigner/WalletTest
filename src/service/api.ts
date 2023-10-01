@@ -6,6 +6,7 @@ const baseURL = "http://localhost:3000"
 export const saveApiData = async ({ ...props }: Card) => {
   const newData: Card = {
     id: uuidv4(),
+    cardName: props.cardName,
     cardNumber: props.cardNumber,
     name: props.name,
     expirationDate: props.expirationDate,

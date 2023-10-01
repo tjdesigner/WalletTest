@@ -6,8 +6,8 @@ import {
 } from "react-native";
 import { v4 as uuidv4 } from "uuid";
 import { RootStackScreenProps } from "../../@types/navigation";
-import { ScreenWithCustomBackgroundComponent } from "../../components/templates/ScreenWithCustomBackground";
-import { ButtonComponent } from "../../components";
+
+import { ButtonComponent, ScreenWithCustomBackgroundComponent } from "../../components";
 import { Wrapper } from "../../components/Wrapper/Wrapper";
 import theme from "../../global/styles/theme";
 import { Title } from "../../components/Title/Title";
@@ -38,7 +38,6 @@ export const HomeScreen = ({
                         textButton="meus cartões"
                         backgroundColor="secondary"
                         fullWidth
-                        activeOpacity={.7}
                         onPress={() => navigation.navigate('MyCards')}
                         color={theme.colors.white}
                     />
@@ -54,7 +53,6 @@ export const HomeScreen = ({
                         textButton="cadastrar cartão"
                         backgroundColor="tertiary"
                         fullWidth
-                        activeOpacity={.7}
                         onPress={() => navigation.navigate('Register')}
                     />
                 </Wrapper>

@@ -1,7 +1,8 @@
 import React from "react";
-import { TextCard, CardContainer, CardProps, Card } from "./styles";
+import { TextCard, CardContainer, CardProps, Card, TextCardTitle } from "./styles";
 
 interface CardDataProps extends CardProps {
+    cardName?: string
     cardNumber?: string
     name?: string
     cvv?: string
@@ -11,10 +12,10 @@ interface CardDataProps extends CardProps {
 export const CardComponent = ({ ...props }: CardDataProps) => (
     <CardContainer>
         <Card {...props}>
-            <TextCard>{props.cardNumber}</TextCard>
+            <TextCardTitle>{props.cardName}</TextCardTitle>
             <TextCard>{props.name}</TextCard>
-            <TextCard>{props.cvv}</TextCard>
-            <TextCard>{props.expirationDate}</TextCard>
+            <TextCard>{props.cardNumber}</TextCard>
+            <TextCard>{`Validade ${props.expirationDate}`}</TextCard>
         </Card>
     </CardContainer>
 );

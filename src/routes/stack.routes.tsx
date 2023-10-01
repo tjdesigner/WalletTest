@@ -6,8 +6,6 @@ import Register from "../screens/Register";
 import RegisterConfirmation from "../screens/RegisterConfirmation";
 import MyCards from "../screens/MyCards";
 import { HomeScreen } from "../screens";
-import Icon from 'react-native-vector-icons/Feather';
-import { Alert, TouchableOpacity, View } from "react-native";
 import { IconButtonComponent } from "../components/IconButton/IconButton";
 import { useNavigation } from "@react-navigation/native";
 import { LoadingAnimation } from "../screens/LoadingAnimation/LoadingAnimation";
@@ -53,6 +51,7 @@ export function StackRoutes() {
                 name="MyCards"
                 component={MyCards}
             />
+
             <HomeStack.Screen
                 options={{
                     headerTitle: 'Cadastro',
@@ -63,11 +62,18 @@ export function StackRoutes() {
                 name="Register"
                 component={Register}
             />
+
             <HomeStack.Screen
-                options={{ headerTitle: 'Criar Lista' }}
+                options={{
+                    headerTitle: 'Cadastro',
+                    headerBackTitleVisible: false,
+                    headerTintColor: theme.colors.secondary,
+                    headerStyle: { backgroundColor: 'transparent' }
+                }}
                 name="RegisterConfirmation"
                 component={RegisterConfirmation}
             />
+
             <HomeStack.Screen
                 options={{ headerTitle: 'Criar Lista' }}
                 name="LoadingAnimation"

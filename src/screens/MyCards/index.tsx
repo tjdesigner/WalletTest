@@ -9,6 +9,7 @@ import { Title } from '../../components/Title/Title';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { CardAnimationItem } from '../../components/CardAnimation/ CardAnimation';
 import { useSharedValue } from 'react-native-reanimated'
+import ScreenDefault from '../../components/templates/ScreenDefault';
 
 const MyCardsScreen = ({
     navigation,
@@ -29,52 +30,26 @@ const MyCardsScreen = ({
     }, []);
 
     return (
-        <>
-            <Wrapper
-                style={{
-                    marginTop: Platform.OS === 'android' ? 30 : 100,
-                    backgroundColor: theme.colors.primary
-                }}
-            >
-                <Wrapper style={{
-                    justifyContent: 'center',
-                    alignSelf: 'stretch',
-                    alignItems: 'center',
-                    backgroundColor: theme.colors.white,
-                    borderBottomLeftRadius: 40,
-                    borderBottomRightRadius: 40,
-                    paddingVertical: 16,
-                    height: 60
-                }}
-                >
-                    <Title type='topPage' color={theme.colors.secondary} text='Meus cartões' />
-                </Wrapper>
-            </Wrapper>
+        <ScreenDefault pageTitle={'Meus cartões'}>
+            {data.map((e, i) => {
+                const number = evenOrOddNumber(i)
+                return <CardAnimationItem
+                    cardName={number === 'impar' ? 'Black Card' : 'Green Card'}
+                    textColor={i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black}
+                    backgroundColor={i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black}
+                    key={e.id}
+                    cardNumber={maskHideNumbers(e.cardNumber)}
+                    name={e.name}
+                    expirationDate={`Validade ${e.expirationDate}`}
+                    index={i}
+                    dropdownItemsCount={data?.length}
+                    isExpanded={isExpanded}
+                    cvv={''} />
 
-            <Wrapper style={{ backgroundColor: theme.colors.primary, flex: 1, position: 'relative' }} justifyContent='center' alignItems='center'>
+            })}
 
-                {data.map((e, i) => {
-                    const number = evenOrOddNumber(i)
-                    return <CardAnimationItem
-                        cardName={number === 'impar' ? 'Black Card' : 'Green Card'}
-                        textColor={i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black}
-                        backgroundColor={i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black}
-                        key={e.id}
-                        cardNumber={maskHideNumbers(e.cardNumber)}
-                        name={e.name}
-                        expirationDate={`Validade ${e.expirationDate}`}
-                        index={i}
-                        dropdownItemsCount={data?.length}
-                        isExpanded={isExpanded}
-                        cvv={''} />
-
-                })}
-
-                <Text style={{ color: 'white' }}>usar este cartão</Text>
-            </Wrapper>
-
-
-        </>
+            <Text style={{ color: 'white' }}>usar este cartão</Text>
+        </ScreenDefault>
     );
 };
 

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
-import { ContainerMainPage } from "../../global/styles/theme";
 import { BackgroundTopPosition, BackgroundBottomPosition } from "./styles";
+import { ContainerMainPage } from "../../../global/styles/theme";
 
 export const ScreenWithCustomBackgroundComponent = ({ children }: PropsWithChildren) => (
     <ContainerMainPage>

@@ -14,10 +14,11 @@ import type { StackScreenProps } from "@react-navigation/stack"
 
 interface Card {
   id?: string
-  cardNumber: string
-  name: string
-  expirationDate: string
-  cvv: string
+  cardName?: string
+  cardNumber?: string
+  name?: string
+  expirationDate?: string
+  cvv?: string
 }
 
 /****************************************************/

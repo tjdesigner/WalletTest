@@ -14,7 +14,7 @@ interface ButtonTextProps extends CustomButtonProps {
 }
 
 export const ButtonComponent = ({ ...props }: ButtonTextProps) => (
-    <ButtonContainer {...props}>
+    <ButtonContainer {...props} activeOpacity={.7}>
         <Text
             style={{
                 color: props.color ? props.color : theme.colors.primary,
