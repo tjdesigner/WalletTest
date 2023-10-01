@@ -10,36 +10,41 @@ import { Card } from '../../@types/navigation';
 import theme from '../../global/styles/theme';
 
 
-type DropdownListItemProps = Card & {
+type CardListItemProps = Card & {
     index: number;
     dropdownItemsCount: number;
     isExpanded: SharedValue<boolean>;
+    backgroundColor: string
+    textColor: string
+    cardName: string
 };
 
-const CardAnimationItem: React.FC<DropdownListItemProps> = ({
+const CardAnimationItem: React.FC<CardListItemProps> = ({
     cardNumber,
     name,
     expirationDate,
     cvv,
+    cardName,
     index,
     dropdownItemsCount,
     isExpanded,
+    backgroundColor,
+    textColor
 }) => {
-    const { width: windowWidth } = useWindowDimensions();
-    const DropdownListItemHeight = 85;
-    const Margin = 0;
+    const DropdownListItemHeight = 180;
+    const Margin = 10;
 
     const fullDropdownHeight =
         dropdownItemsCount * (DropdownListItemHeight + Margin);
 
-    const collapsedTop = fullDropdownHeight / 2 - DropdownListItemHeight;
+    const collapsedTop = fullDropdownHeight / 5 - DropdownListItemHeight;
     const expandedTop = (DropdownListItemHeight + Margin) * index;
 
     const expandedScale = 1;
-    const collapsedScale = 1 - index * .08;
+    const collapsedScale = 1 - index * .2;
 
-    const expandedBackgroundColor = '#1B1B1B';
-    const collapsedBackgroundColor = "#1B1B1B"
+    const expandedBackgroundColor = backgroundColor;
+    const collapsedBackgroundColor = backgroundColor
 
     const rStyle = useAnimatedStyle(() => {
         return {
@@ -85,7 +90,7 @@ const CardAnimationItem: React.FC<DropdownListItemProps> = ({
                 {
                     zIndex: dropdownItemsCount - index,
                     position: 'absolute',
-                    width: windowWidth * 0.95,
+                    width: 300,
                     height: DropdownListItemHeight,
                     borderRadius: 10,
                 },
@@ -93,7 +98,7 @@ const CardAnimationItem: React.FC<DropdownListItemProps> = ({
             ]}
         >
             <View style={styles.container}>
-                <Animated.View
+                {/* <Animated.View
                     style={[
                         styles.iconContainer,
                         {
@@ -102,10 +107,11 @@ const CardAnimationItem: React.FC<DropdownListItemProps> = ({
                         rLeftIconOpacityStyle,
                     ]}
                 >
-                </Animated.View>
-                <Text style={styles.label}>{name}</Text>
-                <Text style={styles.label}>{cardNumber}</Text>
-                <Text style={styles.label}>{expirationDate}</Text>
+                </Animated.View> */}
+                <Text style={[styles.label, { color: textColor, marginBottom: theme.spacesNumber.large }]}>{cardName}</Text>
+                <Text style={[styles.label, { color: textColor }]}>{name}</Text>
+                <Text style={[styles.label, { color: textColor }]}>{cardNumber}</Text>
+                <Text style={[styles.label, { color: textColor }]}>{expirationDate}</Text>
                 <Animated.View
                     style={[
                         styles.iconContainer,
@@ -116,11 +122,11 @@ const CardAnimationItem: React.FC<DropdownListItemProps> = ({
                         },
                     ]}
                 >
-                    <MaterialIcons
+                    {/* <MaterialIcons
                         name={isHeader ? 'arrow-forward-ios' : 'arrow-forward'}
                         size={25}
                         color={'#D4D4D4'}
-                    />
+                    /> */}
                 </Animated.View>
             </View>
         </Animated.View>
@@ -131,13 +137,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'flex-start',
+        padding: theme.spacesNumber.default,
     },
     label: {
-        color: '#D4D4D4',
-        fontSize: 22,
-        textTransform: 'uppercase',
-        letterSpacing: 1.2,
+        fontSize: theme.fontSizeNumber.default,
+        fontFamily: theme.fonts.family.regular,
+        letterSpacing: 1,
     },
     iconContainer: {
         position: 'absolute',

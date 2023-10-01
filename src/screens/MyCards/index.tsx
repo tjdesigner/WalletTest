@@ -51,68 +51,28 @@ const MyCardsScreen = ({
                 </Wrapper>
             </Wrapper>
 
-            <Wrapper justifyContent='center' alignItems='center' style={{ backgroundColor: theme.colors.primary, flex: 1, position: 'relative' }}>
-                <Wrapper justifyContent='center' alignItems='center'>
+            <Wrapper style={{ backgroundColor: theme.colors.primary, flex: 1, position: 'relative' }} justifyContent='center' alignItems='center'>
 
-                    {data.map((e, i) => {
-                        const number = evenOrOddNumber(i)
-                        return <CardAnimationItem key={e.id} cardNumber={e.cardNumber} name={e.name} expirationDate={e.expirationDate} index={i} dropdownItemsCount={data?.length} isExpanded={isExpanded} cvv={''} />
+                {data.map((e, i) => {
+                    const number = evenOrOddNumber(i)
+                    return <CardAnimationItem
+                        cardName={number === 'impar' ? 'Black Card' : 'Green Card'}
+                        textColor={i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black}
+                        backgroundColor={i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black}
+                        key={e.id}
+                        cardNumber={maskHideNumbers(e.cardNumber)}
+                        name={e.name}
+                        expirationDate={`Validade ${e.expirationDate}`}
+                        index={i}
+                        dropdownItemsCount={data?.length}
+                        isExpanded={isExpanded}
+                        cvv={''} />
 
-                        // <TouchableOpacity onPress={() => Alert.alert(`cartão de índice ${i}`)} style={{
-                        //     backgroundColor: i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black,
-                        //     padding: theme.spacesNumber.default,
-                        //     width: 300,
-                        //     height: 180,
-                        //     marginBottom: 10,
-                        //     borderRadius: theme.spacesNumber.default,
-                        //     justifyContent: 'space-around',
-                        //     position: 'absolute',
-                        //     top: (40 + 10) * i,
-                        // }}
-                        //     key={e.id}
-                        // >
-                        //     <Wrapper>
-                        //         <Text style={{
-                        //             color: i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black,
-                        //             marginBottom: theme.spacesNumber.large,
-                        //             fontSize: theme.fontSizeNumber.specific,
-                        //             fontFamily: theme.fonts.family.regular
-                        //         }}>
-                        //             {number === 'impar' ? 'Black Card' : 'Green Card'}
-                        //         </Text>
-                        //         <Text style={{
-                        //             color: i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black,
-                        //             marginBottom: theme.spacesNumber.small,
-                        //             fontSize: theme.fontSizeNumber.default,
-                        //             fontFamily: theme.fonts.family.regular
-                        //         }}>
-                        //             {e.name}
-                        //         </Text>
-                        //         <Text style={{
-                        //             color: i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black,
-                        //             marginBottom: theme.spacesNumber.small,
-                        //             fontSize: theme.fontSizeNumber.default,
-                        //             fontFamily: theme.fonts.family.regular
-                        //         }}>
-                        //             {maskHideNumbers(e.cardNumber)}
-                        //         </Text>
-                        //         <Text style={{
-                        //             color: i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black,
-                        //             marginBottom: theme.spacesNumber.small,
-                        //             fontSize: theme.fontSizeNumber.default,
-                        //             fontFamily: theme.fonts.family.regular
-                        //         }}>
-                        //             {`Validade ${e.expirationDate}`}
-                        //         </Text>
-                        //     </Wrapper>
+                })}
 
-                        // </TouchableOpacity>
-
-                    })}
-
-                    <Text style={{ color: 'white' }}>usar este cartão</Text>
-                </Wrapper>
+                <Text style={{ color: 'white' }}>usar este cartão</Text>
             </Wrapper>
+
 
         </>
     );
