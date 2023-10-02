@@ -39,7 +39,7 @@ export const HomeScreen = ({
                         backgroundColor="secondary"
                         fullWidth
                         onPress={() => navigation.navigate('MyCards')}
-                        color={theme.colors.white}
+                        color="white"
                     />
                 </Wrapper>
 
@@ -48,7 +48,6 @@ export const HomeScreen = ({
                     marginBottom={theme.spacesNumber.default}
                     marginRight={theme.spacesNumber.default}
                 >
-
                     <ButtonComponent
                         textButton="cadastrar cartão"
                         backgroundColor="tertiary"

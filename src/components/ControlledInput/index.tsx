@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react'
 import { Control, FieldError, Controller } from 'react-hook-form'
-import MaskInput, { Mask, MaskInputProps } from 'react-native-mask-input';
+import MaskInput, { Mask } from 'react-native-mask-input';
 import { ControllerContainer, ControllerContainerProps, Error, InputContainer, InputText, TextLabel } from './styles'
 import theme from '../../global/styles/theme'
-import { cardNumberFormat } from '../../helpers/utils'
 
 interface DefaultProps extends ControllerContainerProps {
     control: Control<any>
@@ -31,14 +30,8 @@ export function ControlledInput({ control, error, name, mask, ...rest }: Default
                             onChangeText={onChange}
                             value={value}
                             {...rest}
-                            placeholderTextColor={theme.colors.light}
+                            placeholderTextColor={theme.colors.textDisabled}
                         />
-                        {/* <InputText
-                            onChangeText={onChange}
-                            value={value}
-                            {...rest}
-                            placeholderTextColor={theme.colors.light}
-                        /> */}
                     </InputContainer>
                 )}
             />

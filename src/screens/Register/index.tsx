@@ -127,7 +127,13 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                     marginLeft={theme.spacesNumber.xs}
                     marginRight={theme.spacesNumber.xs}
                 >
-                    <ButtonComponent onPress={onSubmit} backgroundColor='white' fullWidth textButton='avançar' />
+                    <ButtonComponent
+                        backgroundColor="secondary"
+                        fullWidth
+                        onPress={() => navigation.navigate('MyCards')}
+                        color="white"
+                        textButton="meus cartões"
+                    />
                 </Wrapper>
             </ContainerMainPage>
         </ScreenWithCustomBackgroundComponent>
