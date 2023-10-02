@@ -11,6 +11,6 @@ interface ButtonTextProps extends CustomButtonProps {
 
 export const ButtonComponent = ({ ...props }: ButtonTextProps) => (
     <ButtonContainer {...props} activeOpacity={.7}>
-        <TextButton {...props} >{props.textButton}</TextButton>
+        <TextButton suppressHighlighting={true} {...props}>{props.textButton}</TextButton>
     </ButtonContainer>
 );
