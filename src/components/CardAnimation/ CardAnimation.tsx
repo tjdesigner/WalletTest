@@ -8,7 +8,7 @@ import { Card } from '../../@types/navigation';
 import theme from '../../global/styles/theme';
 import { useEffect, useState } from 'react';
 import { ContainerCardAnimation, TextCardAnimation } from './styles';
-import { showWidthScreen } from '../../helpers/utils';
+import { showHeightScreen, showWidthScreen } from '../../helpers/utils';
 
 
 type CardListItemProps = Card & {
@@ -69,9 +69,10 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
 
     const isHeader = index === 0;
 
+    console.log(dropdownItemsCount);
     useEffect(() => {
-        console.log(expanded);
-    }, [isExpanded.value])
+
+    }, [])
 
     return (
         <Animated.View
@@ -84,7 +85,7 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
                 {
                     zIndex: dropdownItemsCount - index,
                     position: 'absolute',
-                    marginTop: !expanded ? index * -60 : index * -60,
+                    marginTop: dropdownItemsCount - index * 60,
                     width: showWidthScreen - theme.spacesNumber.xxxLarge,
                     height: DropdownListItemHeight,
                     borderRadius: theme.spacesNumber.default,

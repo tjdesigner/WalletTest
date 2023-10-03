@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
 import theme from '../../global/styles/theme';
 import { Card, RootStackScreenProps } from '../../@types/navigation';
 import { getApiData } from '../../service/api';
@@ -10,43 +10,43 @@ import ScreenDefault from '../../components/templates/ScreenDefault';
 import { CARD_NAME } from '../../helpers/constants';
 import { ButtonComponent } from '../../components';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
+import { Center } from 'native-base';
 
 const MyCardsScreen = ({
     navigation,
 }: RootStackScreenProps<'MyCards'>) => {
     const [data, setData] = useState<Card[]>([]);
 
-    const getData = async () => {
+    const getData = useCallback(async () => {
         let data = await getApiData()
-        console.log(data);
-
-        setData(data)
-    }
+        setData(await data)
+    }, [getApiData])
 
     const isExpanded = useSharedValue(false)
 
     useEffect(() => {
         getData()
-    }, []);
+    }, [data]);
 
     return (
         <>
             <ScreenDefault pageTitle={'Meus cartões'}>
                 {data.map((e, i) => {
                     const number = evenOrOddNumber(i)
-                    return <CardAnimationItem
-                        cardName={number === 'impar' ? CARD_NAME.BLACK : CARD_NAME.GREEN}
-                        textColor={i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black}
-                        backgroundColor={i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black}
-                        key={e.id}
-                        cardNumber={maskHideNumbers(e.cardNumber)}
-                        name={e.name}
-                        expirationDate={`Validade ${e.expirationDate}`}
-                        index={i}
-                        dropdownItemsCount={data?.length}
-                        isExpanded={isExpanded}
-                        cvv={''} />
-
+                    return (
+                        <CardAnimationItem
+                            cardName={number === 'impar' ? CARD_NAME.GREEN : CARD_NAME.BLACK}
+                            textColor={i !== 0 && number === 'impar' ? theme.colors.black : theme.colors.white}
+                            backgroundColor={i === 0 || number === 'par' ? theme.colors.black : theme.colors.tertiary}
+                            key={e.id}
+                            cardNumber={maskHideNumbers(e.cardNumber)}
+                            name={e.name}
+                            expirationDate={`Validade ${e.expirationDate}`}
+                            index={i}
+                            dropdownItemsCount={data?.length}
+                            isExpanded={isExpanded}
+                            cvv={''} />
+                    )
                 })}
 
             </ScreenDefault>
