@@ -11,9 +11,10 @@ import { ControlledInput } from '../../components/ControlledInput';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { evenOrOddNumber, showWidthScreen } from '../../helpers/utils';
 import { ButtonComponent, ScreenWithCustomBackgroundComponent } from '../../components';
-import { IconButtonComponent } from '../../components/IconButton/IconButton';
 import { Title } from '../../components/Title/Title';
 import { CARD_NAME } from '../../helpers/constants';
+import { cvvMask } from '../../helpers/customMasks';
+import { PhotoIconSVG } from '../../assets/svgs';
 
 const cardSchema = yup.object({
     id: yup
@@ -44,9 +45,6 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
 
     const getData = async () => {
         let data = await getApiData()
-        console.log('111', data);
-        console.log('222', data.length)
-        console.log('333', evenOrOddNumber(data.length));
         setFromDatabase(data)
     }
 
@@ -66,6 +64,7 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
         return result()
     }
 
+
     useEffect(() => {
         getData()
     }, []);
@@ -82,8 +81,15 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                 <Title marginBottom={theme.spacesNumber.medium} text='Wallet Test' color={theme.colors.white} type={'contentPage'} />
 
                 <ControlledInput
-                    icon={<IconButtonComponent backgroundColor={theme.colors.secondary} type='icon-material' name='enhance-photo-translate' color={theme.colors.white} size={30} />}
+                    icon={<PhotoIconSVG
+                        marginLeft={16}
+                        paddingRight={16}
+                        backgroundCircle={theme.colors.secondary}
+                        color={theme.colors.white}
+                        size={32}
+                    />}
                     mask={Masks.CREDIT_CARD}
+                    placeholder=''
                     label='Número do cartão'
                     clearButtonMode='always'
                     name="cardNumber"
@@ -106,10 +112,12 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                             marginRight: theme.spacesNumber.small
                         }}>
                         <ControlledInput
-                            mask={Masks.DATE_DDMMYYYY}
                             label='vencimento'
+                            placeholder='00/00'
                             clearButtonMode='always'
                             name="expirationDate"
+                            mask={cvvMask}
+                            maxLength={5}
                             control={control}
                             error={errors.expirationDate} />
                     </Wrapper>
@@ -119,7 +127,10 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                             label='código de segurança'
                             clearButtonMode='always'
                             name="cvv"
+
+                            maxLength={3}
                             control={control}
+                            placeholder='***'
                             error={errors.cvv} />
                     </Wrapper>
                 </Wrapper>
@@ -128,11 +139,11 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                     marginRight={theme.spacesNumber.xs}
                 >
                     <ButtonComponent
-                        backgroundColor="secondary"
+                        onPress={onSubmit}
+                        backgroundColor='secondary'
                         fullWidth
-                        onPress={() => navigation.navigate('MyCards')}
-                        color="white"
-                        textButton="meus cartões"
+                        textButton='avançar'
+                        color='white'
                     />
                 </Wrapper>
             </ContainerMainPage>

@@ -6,8 +6,9 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Card } from '../../@types/navigation';
 import theme from '../../global/styles/theme';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ContainerCardAnimation, TextCardAnimation } from './styles';
+import { showWidthScreen } from '../../helpers/utils';
 
 
 type CardListItemProps = Card & {
@@ -31,8 +32,11 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
     backgroundColor,
     textColor
 }) => {
+
+    const [expanded, setExpanded] = useState(false)
+
     const DropdownListItemHeight = 180;
-    const Margin = 10;
+    const Margin = -10;
 
     const fullDropdownHeight =
         dropdownItemsCount * (DropdownListItemHeight + Margin);
@@ -66,21 +70,22 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
     const isHeader = index === 0;
 
     useEffect(() => {
-        console.log(isExpanded.value);
-
+        console.log(expanded);
     }, [isExpanded.value])
+
     return (
         <Animated.View
             onTouchEnd={() => {
                 if (isHeader) isExpanded.value = !isExpanded.value;
-                console.log(isExpanded.value);
+                setExpanded(isExpanded.value)
+                console.log(!expanded);
             }}
             style={[
                 {
                     zIndex: dropdownItemsCount - index,
                     position: 'absolute',
-                    marginTop: index * (isExpanded.value ? 0 : -60),
-                    width: 300,
+                    marginTop: !expanded ? index * -60 : index * -60,
+                    width: showWidthScreen - theme.spacesNumber.xxxLarge,
                     height: DropdownListItemHeight,
                     borderRadius: theme.spacesNumber.default,
                 },

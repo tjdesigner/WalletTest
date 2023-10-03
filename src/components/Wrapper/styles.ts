@@ -1,7 +1,30 @@
 import styled from "styled-components/native"
 import { ViewProps } from "react-native"
+import theme from "../../global/styles/theme"
 
+const {
+  primary,
+  secondary,
+  tertiary,
+  danger,
+  warning,
+  success,
+  white,
+  black,
+  textDisabled,
+  backgroundDisabled,
+} = theme.colors
 export interface WrapperProps extends ViewProps {
+  backgroundColor?:
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "info"
+    | "white"
+    | "black"
   padding?: number
   paddingTop?: number
   paddingRight?: number
@@ -61,4 +84,26 @@ export const WrapperContainer = styled.View<WrapperProps>`
         ? "center"
         : "flex-start"
       : "flex-start"};
+  background-color: ${(props) =>
+    props.backgroundColor
+      ? props.backgroundColor === "primary"
+        ? primary
+        : props.backgroundColor === "secondary"
+        ? secondary
+        : props.backgroundColor === "tertiary"
+        ? tertiary
+        : props.backgroundColor === "success"
+        ? success
+        : props.backgroundColor === "warning"
+        ? warning
+        : props.backgroundColor === "danger"
+        ? danger
+        : props.backgroundColor === "info"
+        ? secondary
+        : props.backgroundColor === "white"
+        ? white
+        : props.backgroundColor === "black"
+        ? black
+        : primary
+      : primary};
 `

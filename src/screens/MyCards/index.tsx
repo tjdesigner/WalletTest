@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { v4 as uuidv4 } from 'uuid';
-import theme, { ContainerMainPage } from '../../global/styles/theme';
+import { Text } from 'react-native';
+import theme from '../../global/styles/theme';
 import { Card, RootStackScreenProps } from '../../@types/navigation';
 import { getApiData } from '../../service/api';
-import { evenOrOddNumber, maskHideNumbers, showHeightScreen, showWidthScreen } from '../../helpers/utils';
-import { Title } from '../../components/Title/Title';
-import { Wrapper } from '../../components/Wrapper/Wrapper';
+import { evenOrOddNumber, maskHideNumbers } from '../../helpers/utils';
 import { CardAnimationItem } from '../../components/CardAnimation/ CardAnimation';
 import { useSharedValue } from 'react-native-reanimated'
 import ScreenDefault from '../../components/templates/ScreenDefault';
 import { CARD_NAME } from '../../helpers/constants';
+import { ButtonComponent } from '../../components';
+import { Wrapper } from '../../components/Wrapper/Wrapper';
 
 const MyCardsScreen = ({
     navigation,
@@ -31,26 +30,46 @@ const MyCardsScreen = ({
     }, []);
 
     return (
-        <ScreenDefault pageTitle={'Meus cartões'}>
-            {data.map((e, i) => {
-                const number = evenOrOddNumber(i)
-                return <CardAnimationItem
-                    cardName={number === 'impar' ? CARD_NAME.BLACK : CARD_NAME.GREEN}
-                    textColor={i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black}
-                    backgroundColor={i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black}
-                    key={e.id}
-                    cardNumber={maskHideNumbers(e.cardNumber)}
-                    name={e.name}
-                    expirationDate={`Validade ${e.expirationDate}`}
-                    index={i}
-                    dropdownItemsCount={data?.length}
-                    isExpanded={isExpanded}
-                    cvv={''} />
+        <>
+            <ScreenDefault pageTitle={'Meus cartões'}>
+                {data.map((e, i) => {
+                    const number = evenOrOddNumber(i)
+                    return <CardAnimationItem
+                        cardName={number === 'impar' ? CARD_NAME.BLACK : CARD_NAME.GREEN}
+                        textColor={i !== 0 && number === 'impar' ? theme.colors.white : theme.colors.black}
+                        backgroundColor={i === 0 || number === 'par' ? theme.colors.tertiary : theme.colors.black}
+                        key={e.id}
+                        cardNumber={maskHideNumbers(e.cardNumber)}
+                        name={e.name}
+                        expirationDate={`Validade ${e.expirationDate}`}
+                        index={i}
+                        dropdownItemsCount={data?.length}
+                        isExpanded={isExpanded}
+                        cvv={''} />
 
-            })}
+                })}
 
-            <Text style={{ color: 'white' }}>usar este cartão</Text>
-        </ScreenDefault>
+            </ScreenDefault>
+            {!isExpanded ? < Wrapper justifyContent='center' alignItems='center' paddingBottom={theme.spacesNumber.large}>
+                <Text style={{ color: 'white', fontSize: 16 }}>usar este cartão</Text>
+            </Wrapper > :
+                <Wrapper
+                    backgroundColor='primary'
+                    alignItems="center"
+                    paddingLeft={theme.spacesNumber.large}
+                    paddingRight={theme.spacesNumber.large}
+                    paddingBottom={theme.spacesNumber.xxxLarge}>
+
+                    <ButtonComponent
+                        onPress={() => console.log('')}
+                        fullWidth
+                        textButton={"pagar com esse cartão"}
+                        color="white"
+                        backgroundColor='secondary'
+                    />
+                </Wrapper>
+            }
+        </>
     );
 };
 

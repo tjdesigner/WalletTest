@@ -8,7 +8,7 @@ import MyCards from "../screens/MyCards";
 import { HomeScreen } from "../screens";
 import { IconButtonComponent } from "../components/IconButton/IconButton";
 import { useNavigation } from "@react-navigation/native";
-import { LoadingAnimation } from "../screens/LoadingAnimation/LoadingAnimation";
+import LoadingAnimation from "../screens/LoadingAnimation/LoadingAnimation";
 
 const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -75,7 +75,7 @@ export function StackRoutes() {
             />
 
             <HomeStack.Screen
-                options={{ headerTitle: 'Criar Lista' }}
+                options={{ headerShown: false }}
                 name="LoadingAnimation"
                 component={LoadingAnimation}
             />

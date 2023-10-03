@@ -3,6 +3,7 @@ import { Control, FieldError, Controller } from 'react-hook-form'
 import MaskInput, { Mask } from 'react-native-mask-input';
 import { ControllerContainer, ControllerContainerProps, Error, InputContainer, InputText, TextLabel } from './styles'
 import theme from '../../global/styles/theme'
+import { View } from 'react-native';
 
 interface DefaultProps extends ControllerContainerProps {
     control: Control<any>
@@ -23,7 +24,9 @@ export function ControlledInput({ control, error, name, mask, ...rest }: Default
                 control={control}
                 render={({ field: { onChange, value } }) => (
                     <InputContainer>
-                        {Boolean(rest.icon) && rest.icon}
+                        <View style={{ marginLeft: rest.icon ? 10 : 0 }}>
+                            {Boolean(rest.icon) && rest.icon}
+                        </View>
                         <MaskInput
                             style={{ height: 50, paddingLeft: theme.spacesNumber.small, flex: 1 }}
                             mask={mask}

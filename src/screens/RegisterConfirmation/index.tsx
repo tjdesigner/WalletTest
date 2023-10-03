@@ -14,7 +14,7 @@ const RegisterConfirmationScreen = ({ navigation }: RootStackScreenProps<'Regist
     const card = route.params?.card
 
     const handleNavigation = () => {
-        navigation.navigate('MyCards')
+        navigation.navigate('LoadingAnimation')
     }
 
     return (
@@ -36,6 +36,7 @@ const RegisterConfirmationScreen = ({ navigation }: RootStackScreenProps<'Regist
                     fullWidth
                     backgroundColor='secondary'
                     textButton={"avançar"}
+                    color="white"
                 />
             </Wrapper>
         </ScreenWithCustomBackgroundComponent>

@@ -76,10 +76,10 @@ export const TextButton = styled.Text<TextStyle>`
   font-size: ${theme.fontSizeNumber.specific}px;
   font-family: ${theme.fonts.family.regular};
   background-color: ${(props) =>
-    props.backgroundColor
-      ? props.disabled
-        ? "transparent"
-        : props.backgroundColor === "primary"
+    props.disabled
+      ? backgroundDisabled
+      : props.backgroundColor
+      ? props.backgroundColor === "primary"
         ? primary
         : props.backgroundColor === "secondary"
         ? secondary
@@ -100,10 +100,10 @@ export const TextButton = styled.Text<TextStyle>`
         : primary
       : primary};
   color: ${(props) =>
-    props.color
-      ? props.disabled
-        ? textDisabled
-        : props.color === "primary"
+    props.disabled
+      ? textDisabled
+      : props.color
+      ? props.color === "primary"
         ? primary
         : props.color === "secondary"
         ? secondary
