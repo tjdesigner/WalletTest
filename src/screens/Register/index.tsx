@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Masks } from 'react-native-mask-input';
 
 import theme, { ContainerMainPage } from '../../global/styles/theme';
-import { getApiData, saveApiData } from '../../service/api';
-import { Card, RootStackScreenProps } from '../../@types/navigation';
+import { saveApiData } from '../../service/api';
+import { RootStackScreenProps } from '../../@types/navigation';
 import { ControlledInput } from '../../components/ControlledInput';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { evenOrOddNumber, showWidthScreen } from '../../helpers/utils';
@@ -15,6 +15,8 @@ import { Title } from '../../components/Title/Title';
 import { CARD_NAME } from '../../helpers/constants';
 import { cvvMask } from '../../helpers/customMasks';
 import { PhotoIconSVG } from '../../assets/svgs';
+import { useDispatch, useSelector } from 'react-redux';
+import { Card } from '../../@types/card';
 
 const cardSchema = yup.object({
     id: yup
@@ -39,17 +41,14 @@ const cardSchema = yup.object({
 })
 
 const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
-    const [newCard, setNewCard] = useState<Card[]>([]);
     const [fromDatabase, setFromDatabase] = useState<Card[]>([]);
-    const { handleSubmit, control, formState: { errors } } = useForm({ resolver: yupResolver(cardSchema) })
+    const { handleSubmit, control, reset, formState: { errors } } = useForm({ resolver: yupResolver(cardSchema) })
+    const dispatch = useDispatch();
 
-    const getData = async () => {
-        let data = await getApiData()
-        setFromDatabase(data)
-    }
 
     const onSubmit = () => {
         const result = handleSubmit(async (data: Card) => await saveApiData(data).then(res => {
+            dispatch({ type: 'card/addNewCard', payload: res })
             navigation.navigate('RegisterConfirmation', {
                 card: {
                     id: res.id,
@@ -60,14 +59,16 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                     cvv: res.cvv,
                 }
             })
+            reset({
+                id: '',
+                name: '',
+                cardNumber: '',
+                expirationDate: '',
+                cvv: ''
+            })
         }))
         return result()
     }
-
-
-    useEffect(() => {
-        getData()
-    }, []);
 
     return (
         <ScreenWithCustomBackgroundComponent>

@@ -5,8 +5,7 @@ import { Platform } from "react-native"
 export const ScreenDefaultContainer = styled.View`
   background-color: ${theme.colors.primary};
   flex: 1;
-  position: relative;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 

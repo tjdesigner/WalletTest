@@ -1,7 +1,7 @@
-import { Card } from "../@types/navigation"
+import { Card } from "../@types/card"
 import { v4 as uuidv4 } from "uuid"
 
-const baseURL = "http://localhost:3000"
+export const baseURL = "http://localhost:3000"
 
 export const saveApiData = async ({ ...props }: Card) => {
   const newData: Card = {
@@ -22,8 +22,6 @@ export const saveApiData = async ({ ...props }: Card) => {
   })
 
   const res = result.json()
-  console.log("2222", JSON.stringify(await res))
-
   return res
 }
 

@@ -11,15 +11,7 @@ import type {
   NavigatorScreenParams,
 } from "@react-navigation/native"
 import type { StackScreenProps } from "@react-navigation/stack"
-
-interface Card {
-  id?: string
-  cardName?: string
-  cardNumber?: string
-  name?: string
-  expirationDate?: string
-  cvv?: string
-}
+import { Card } from "./card"
 
 /****************************************************/
 

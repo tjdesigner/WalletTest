@@ -13,6 +13,8 @@ import {
 import { ThemeProvider } from 'styled-components';
 import theme from './global/styles/theme';
 import Routes from './routes';
+import { Provider } from 'react-redux';
+import { store } from './redux/features/store';
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -22,7 +24,9 @@ const App = () => (
       translucent={true}
       animated={true}
     />
-    <Routes />
+    <Provider store={store}>
+      <Routes />
+    </Provider>
   </ThemeProvider>
 )
 

@@ -4,7 +4,7 @@ import Animated, {
     withTiming,
     SharedValue
 } from 'react-native-reanimated';
-import { Card } from '../../@types/navigation';
+import { Card } from '../../@types/card';
 import theme from '../../global/styles/theme';
 import { useEffect, useState } from 'react';
 import { ContainerCardAnimation, TextCardAnimation } from './styles';
@@ -32,8 +32,6 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
     backgroundColor,
     textColor
 }) => {
-
-    const [expanded, setExpanded] = useState(false)
 
     const DropdownListItemHeight = 180;
     const Margin = -10;
@@ -68,24 +66,23 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
     }, []);
 
     const isHeader = index === 0;
-
-    console.log(dropdownItemsCount);
     useEffect(() => {
 
     }, [])
 
+    const concatNumber = Number(
+        dropdownItemsCount === 1 ? .005 : dropdownItemsCount === 2 ? .0035 : dropdownItemsCount === 3 ? .002 : .0006)
+
     return (
         <Animated.View
             onTouchEnd={() => {
-                if (isHeader) isExpanded.value = !isExpanded.value;
-                setExpanded(isExpanded.value)
-                console.log(!expanded);
+                if (isHeader && dropdownItemsCount > 1) isExpanded.value = !isExpanded.value;
             }}
             style={[
                 {
                     zIndex: dropdownItemsCount - index,
                     position: 'absolute',
-                    marginTop: dropdownItemsCount - index * 60,
+                    marginTop: !isExpanded.value ? (index - showHeightScreen * concatNumber) * (- 60) : showHeightScreen * .01,
                     width: showWidthScreen - theme.spacesNumber.xxxLarge,
                     height: DropdownListItemHeight,
                     borderRadius: theme.spacesNumber.default,
@@ -99,7 +96,7 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
                 <TextCardAnimation style={{ color: textColor }}>{cardNumber}</TextCardAnimation>
                 <TextCardAnimation style={{ color: textColor }}>{expirationDate}</TextCardAnimation>
             </ContainerCardAnimation>
-        </Animated.View >
+        </Animated.View>
     );
 };
 
