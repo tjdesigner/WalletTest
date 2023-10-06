@@ -12,11 +12,12 @@ import { SubTitle } from "../../components/SubTitle/SubTitle";
 const RegisterConfirmationScreen = ({ navigation }: RootStackScreenProps<'RegisterConfirmation'>) => {
     const route = useRoute<RouteProp<RootStackParamList, 'RegisterConfirmation'>>()
     const card = route.params?.card
-
     const handleNavigation = () => {
         navigation.navigate('LoadingAnimation')
     }
 
+
+    const { tertiary, black, white } = theme.colors
     return (
         <ScreenWithCustomBackgroundComponent>
             <Wrapper alignItems="center" marginBottom={theme.spacesNumber.large}>
@@ -28,7 +29,9 @@ const RegisterConfirmationScreen = ({ navigation }: RootStackScreenProps<'Regist
                 cardName={card?.cardName}
                 cardNumber={maskHideNumbers(card?.cardNumber)}
                 cvv={card?.cvv}
+                color={card?.cardName === 'Green Card' ? black : white}
                 expirationDate={card?.expirationDate}
+                backgroundColor={card?.cardName === 'Green Card' ? theme.colors.tertiary : black}
             />
             <Wrapper alignItems="center" marginLeft={30} marginRight={30} marginTop={theme.spacesNumber.large}>
                 <ButtonComponent

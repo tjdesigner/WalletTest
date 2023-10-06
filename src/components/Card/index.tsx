@@ -12,10 +12,10 @@ interface CardDataProps extends CardProps {
 export const CardComponent = ({ ...props }: CardDataProps) => (
     <CardContainer>
         <Card {...props}>
-            <TextCardTitle>{props.cardName}</TextCardTitle>
-            <TextCard>{props.name}</TextCard>
-            <TextCard>{props.cardNumber}</TextCard>
-            <TextCard>{`Validade ${props.expirationDate}`}</TextCard>
+            <TextCardTitle style={{ color: props.color }}>{props.cardName}</TextCardTitle>
+            <TextCard style={{ color: props.color }}>{props.name}</TextCard>
+            <TextCard style={{ color: props.color }}>{props.cardNumber}</TextCard>
+            <TextCard style={{ color: props.color }}>{`Validade ${props.expirationDate}`}</TextCard>
         </Card>
     </CardContainer>
 );

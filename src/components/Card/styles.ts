@@ -4,6 +4,7 @@ import { showWidthScreen } from "../../helpers/utils"
 
 export interface CardProps {
   backgroundColor?: string
+  color?: string
 }
 
 export const CardContainer = styled.View`
@@ -21,13 +22,15 @@ export const Card = styled.View<CardProps>`
     props.backgroundColor ? props.backgroundColor : theme.colors.tertiary};
 `
 
-export const TextCardTitle = styled.Text`
+export const TextCardTitle = styled.Text<CardProps>`
   font-size: ${theme.fontSize.specific};
   font-family: ${theme.fonts.family.regular};
   margin-bottom: ${theme.spaces.large};
+  color: ${(props) => (props.color ? props.color : theme.colors.white)};
 `
 
-export const TextCard = styled.Text`
+export const TextCard = styled.Text<CardProps>`
   font-size: ${theme.fontSize.default};
   font-family: ${theme.fonts.family.regular};
+  color: ${(props) => (props.color ? props.color : theme.colors.white)};
 `

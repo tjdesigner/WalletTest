@@ -6,10 +6,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Card } from '../../@types/card';
 import theme from '../../global/styles/theme';
-import { useEffect, useState } from 'react';
 import { ContainerCardAnimation, TextCardAnimation } from './styles';
 import { showHeightScreen, showWidthScreen } from '../../helpers/utils';
-
 
 type CardListItemProps = Card & {
     index: number;
@@ -66,9 +64,6 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
     }, []);
 
     const isHeader = index === 0;
-    useEffect(() => {
-
-    }, [])
 
     const concatNumber = Number(
         dropdownItemsCount === 1 ? .005 : dropdownItemsCount === 2 ? .0035 : dropdownItemsCount === 3 ? .002 : .0006)
@@ -82,7 +77,7 @@ const CardAnimationItem: React.FC<CardListItemProps> = ({
                 {
                     zIndex: dropdownItemsCount - index,
                     position: 'absolute',
-                    marginTop: !isExpanded.value ? (index - showHeightScreen * concatNumber) * (- 60) : showHeightScreen * .01,
+                    marginTop: !isExpanded.value ? (index - showHeightScreen * concatNumber) * (- 60) : showHeightScreen * .015,
                     width: showWidthScreen - theme.spacesNumber.xxxLarge,
                     height: DropdownListItemHeight,
                     borderRadius: theme.spacesNumber.default,

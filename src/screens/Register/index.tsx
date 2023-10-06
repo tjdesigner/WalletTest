@@ -18,6 +18,7 @@ import { PhotoIconSVG } from '../../assets/svgs';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '../../@types/card';
 import { ContainerMainPage } from '../../global/styles/default.styles';
+import { Text } from 'react-native';
 
 const cardSchema = yup.object({
     id: yup
@@ -25,35 +26,37 @@ const cardSchema = yup.object({
     ,
     cardNumber: yup
         .string()
-        .required()
+        .required('Número do cartão é obrigatório')
     ,
     name: yup
         .string()
-        .required()
+        .required('Nome do titular é obrigatório')
     ,
     expirationDate: yup
         .string()
-        .required()
+        .required('data de vencimento é obrigatória')
     ,
     cvv: yup
         .string()
-        .required()
+        .required('código de segurança é obrigatório')
     ,
 })
 
 const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
     const [fromDatabase, setFromDatabase] = useState<Card[]>([]);
-    const { handleSubmit, control, reset, formState: { errors } } = useForm({ resolver: yupResolver(cardSchema) })
+    const { handleSubmit, control, reset, formState: { errors }, getValues } = useForm({ resolver: yupResolver(cardSchema) })
     const dispatch = useDispatch();
-
 
     const onSubmit = () => {
         const result = handleSubmit(async (data: Card) => await saveApiData(data).then(res => {
             dispatch({ type: 'card/addNewCard', payload: res })
+            setFromDatabase(res)
             navigation.navigate('RegisterConfirmation', {
                 card: {
                     id: res.id,
-                    cardName: evenOrOddNumber(fromDatabase.length) === 'par' ? CARD_NAME.GREEN : CARD_NAME.BLACK,
+                    cardName: evenOrOddNumber(fromDatabase.length) === 'par' ||
+                        fromDatabase.length !== 0 ?
+                        CARD_NAME.GREEN : CARD_NAME.BLACK,
                     name: res.name,
                     cardNumber: res.cardNumber,
                     expirationDate: res.expirationDate,
@@ -96,15 +99,14 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<'Register'>) => {
                     clearButtonMode='always'
                     name="cardNumber"
                     control={control}
-                    error={errors.cardNumber} />
-
+                    error={errors.cardNumber}
+                />
                 <ControlledInput
                     label='nome do titular do cartão'
                     clearButtonMode='always'
                     name="name"
                     control={control}
                     error={errors.name} />
-
                 <Wrapper
                     flexDirection='row'
                 >

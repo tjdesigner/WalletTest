@@ -6,8 +6,8 @@ import { baseURL } from "../../../service/api"
 const initialState: Array<Card> = []
 
 export const fetchCards = createAsyncThunk("cards/fetchCards", async () => {
-  const response = await axios.get(`${baseURL}/cards`)
-  return response.data
+  const response = await fetch(`${baseURL}/cards`)
+  return response.json()
 })
 
 export const cardSlice = createSlice({
@@ -17,6 +17,14 @@ export const cardSlice = createSlice({
     addNewCard: (state, action: PayloadAction<Card>) => {
       state.push(...state, action.payload)
     },
+    allCards: (state, action: PayloadAction<Card>) => {
+      state.push(...state)
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCards.fulfilled, (state, action) => {
+      state += action.payload
+    })
   },
 })
 

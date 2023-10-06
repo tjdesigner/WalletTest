@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useReducer } from 'react';
 import { Alert, Text } from 'react-native';
 import theme from '../../global/styles/theme';
 import { RootStackScreenProps } from '../../@types/navigation';
@@ -11,30 +11,41 @@ import { CARD_NAME } from '../../helpers/constants';
 import { ButtonComponent } from '../../components';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { Card } from '../../@types/card';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCards } from '../../redux/features/card/card-slice';
+import { store } from '../../redux/features/store';
 
 const MyCardsScreen = ({
     navigation,
 }: RootStackScreenProps<'MyCards'>) => {
     const [data, setData] = useState<Card[]>([]);
+    const card = useSelector((state) => state)
+    const dispatch = useDispatch()
 
-    const getData = useCallback(async () => {
-        let fetchData = await getApiData()
-        setData(fetchData)
-    }, [getApiData, setData])
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
 
     let isExpanded = useSharedValue(false)
 
-    useEffect(() => {
-        getData()
-    }, [data]);
+    const fetchDataToStore = useCallback(async () => {
+        try {
+            const originalPromiseResult = await dispatch(fetchCards()).unwrap()
+            if (originalPromiseResult) {
+                setData(originalPromiseResult)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }, [setData, fetchCards, forceUpdate])
 
+    useEffect(() => {
+        fetchDataToStore()
+    }, []);
 
     const handleCardSelect = () => {
         Alert.alert('Cartão selecionado com sucesso!', 'Boas compras! =)', [
             {
                 text: 'Entendi',
                 onPress: () => isExpanded.value = !isExpanded.value
-
             }
         ])
     }
