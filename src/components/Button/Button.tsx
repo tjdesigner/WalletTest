@@ -7,10 +7,11 @@ import {
 
 interface ButtonTextProps extends CustomButtonProps {
     textButton: string
+    testIDButton?: string
 }
 
 export const ButtonComponent = ({ ...props }: ButtonTextProps) => (
-    <ButtonContainer {...props} activeOpacity={.7}>
+    <ButtonContainer testID={props.testIDButton} {...props} activeOpacity={.7}>
         <TextButton suppressHighlighting={true} {...props}>{props.textButton}</TextButton>
     </ButtonContainer>
 );

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { BackgroundTopPosition, BackgroundBottomPosition } from "./styles";
-import { ContainerMainPage } from "../../../global/styles/theme";
+import { ContainerMainPage } from "../../../global/styles/default.styles";
 
 interface ScreenWithCustomBackgroundProps extends PropsWithChildren {
     withoutBoxes?: boolean

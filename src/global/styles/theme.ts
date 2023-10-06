@@ -1,5 +1,3 @@
-import styled from "styled-components/native"
-
 export default {
   colors: {
     black: "black",
@@ -135,40 +133,3 @@ export default {
     veryLarge: 76,
   },
 }
-
-interface ContainerMainPageProps {
-  justifyContent: string
-  alignItems: string
-}
-
-export const ContainerMainPage = styled.View<ContainerMainPageProps>`
-  flex: 1;
-  background-color: ${({ theme }) => theme.colors.primary};
-  padding-top: 17px;
-  justify-content: center;
-`
-
-interface ScrollMainPageProps {
-  withPadding?: boolean
-}
-
-export const ScrollMainPageTabbar = styled.ScrollView<ScrollMainPageProps>`
-  flex: 1;
-  padding-left: ${(props) =>
-    props.withPadding ? ({ theme }) => theme.spaces.default : 0};
-  padding-right: ${(props) =>
-    props.withPadding ? ({ theme }) => theme.spaces.default : 0};
-  background-color: ${({ theme }) => theme.colors.white};
-  padding-top: ${({ theme }) => theme.spaces.default};
-  border-radius: ${({ theme }) => theme.spaces.large};
-`
-
-export const ScrollMainPage = styled.ScrollView<ScrollMainPageProps>`
-  flex: 1;
-  padding-left: ${(props) =>
-    props.withPadding ? ({ theme }) => theme.spaces.default : 0};
-  padding-right: ${(props) =>
-    props.withPadding ? ({ theme }) => theme.spaces.default : 0};
-  background-color: ${({ theme }) => theme.colors.white};
-  padding-top: ${({ theme }) => theme.spaces.default};
-`

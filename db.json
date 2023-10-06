@@ -1,3 +1,32 @@
 {
-  "cards": []
+  "cards": [
+    {
+      "id": "53d4e52f-11d9-4d11-b171-ea472eb0a4a4",
+      "cardNumber": "1234 1234 1234 1234",
+      "name": "Tiago de Jesus Sousa Gama",
+      "expirationDate": "12/32",
+      "cvv": "133"
+    },
+    {
+      "id": "765fbd6d-9e1e-43b2-b1dc-e53781423a27",
+      "cardNumber": "1234 1234 1234 1234",
+      "name": "Asdf sdf asfasf  ",
+      "expirationDate": "12/31",
+      "cvv": "123"
+    },
+    {
+      "id": "f532c9c0-4263-40f8-96fc-8850ceb77250",
+      "cardNumber": "1234 2342 3423 4234",
+      "name": "Asdf asdf 1",
+      "expirationDate": "23/12",
+      "cvv": "123"
+    },
+    {
+      "id": "ec6bdb20-c7c1-46e2-91b5-e87ddaa22ee4",
+      "cardNumber": "1241 2341 2341 2341",
+      "name": "Asdf asdf sdf asf",
+      "expirationDate": "12/32",
+      "cvv": "231"
+    }
+  ]
 }

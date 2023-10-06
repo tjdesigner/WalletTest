@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
     Platform,
-    Text,
     View,
 } from "react-native";
-import { v4 as uuidv4 } from "uuid";
 import { RootStackScreenProps } from "../../@types/navigation";
 
 import { ButtonComponent, ScreenWithCustomBackgroundComponent } from "../../components";
@@ -13,7 +11,7 @@ import theme from "../../global/styles/theme";
 import { Title } from "../../components/Title/Title";
 
 export const HomeScreen = ({
-    navigation, route
+    navigation
 }: RootStackScreenProps<'Home'>) => {
 
     return (
@@ -35,6 +33,7 @@ export const HomeScreen = ({
                     marginRight={theme.spacesNumber.default}
                 >
                     <ButtonComponent
+                        testIDButton="mycard-testid"
                         textButton="meus cartões"
                         backgroundColor="secondary"
                         fullWidth
@@ -49,6 +48,7 @@ export const HomeScreen = ({
                     marginRight={theme.spacesNumber.default}
                 >
                     <ButtonComponent
+                        testIDButton="register-testid"
                         textButton="cadastrar cartão"
                         backgroundColor="tertiary"
                         fullWidth

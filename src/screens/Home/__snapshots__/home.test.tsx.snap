@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render home screen 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#142995",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "justifyContent": "center",
+      "paddingTop": 17,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "rgba(238, 238, 238, .2)",
+        "borderBottomLeftRadius": 40,
+        "borderBottomRightRadius": 40,
+        "borderTopLeftRadius": 40,
+        "borderTopRightRadius": 40,
+        "height": 370,
+        "left": -115,
+        "position": "absolute",
+        "top": -205,
+        "transform": [
+          {
+            "rotate": "58deg",
+          },
+        ],
+        "width": 370,
+      }
+    }
+  />
+  <View
+    style={
+      {
+        "backgroundColor": "rgba(238, 238, 238, .2)",
+        "borderBottomLeftRadius": 40,
+        "borderBottomRightRadius": 40,
+        "borderTopLeftRadius": 40,
+        "borderTopRightRadius": 40,
+        "bottom": -205,
+        "height": 370,
+        "position": "absolute",
+        "right": -115,
+        "transform": [
+          {
+            "rotate": "58deg",
+          },
+        ],
+        "width": 370,
+      }
+    }
+  />
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+        "marginTop": 64,
+      }
+    }
+  >
+    <Text
+      color="white"
+      marginBottom={32}
+      style={
+        {
+          "color": "white",
+          "fontFamily": "PTSans-Regular",
+          "fontSize": 28,
+          "marginBottom": 32,
+        }
+      }
+      text="Wallet Test"
+      type="contentPage"
+    >
+      Wallet Test
+    </Text>
+    <View
+      marginBottom={16}
+      marginLeft={24}
+      marginRight={16}
+      style={
+        {
+          "alignItems": "flex-start",
+          "alignSelf": "stretch",
+          "backgroundColor": "#142995",
+          "flexDirection": "column",
+          "justifyContent": "flex-start",
+          "marginBottom": 16,
+          "marginLeft": 24,
+          "marginRight": 16,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "alignSelf": "stretch",
+            "backgroundColor": "#12C2E9",
+            "borderBottomLeftRadius": 12,
+            "borderBottomRightRadius": 12,
+            "borderTopLeftRadius": 12,
+            "borderTopRightRadius": 12,
+            "height": 54,
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+        testID="mycard-testid"
+      >
+        <Text
+          backgroundColor="secondary"
+          color="white"
+          fullWidth={true}
+          onPress={[Function]}
+          style={
+            {
+              "backgroundColor": "#12C2E9",
+              "color": "white",
+              "fontFamily": "PTSans-Regular",
+              "fontSize": 18,
+              "fontWeight": "100",
+            }
+          }
+          suppressHighlighting={true}
+          testIDButton="mycard-testid"
+          textButton="meus cartões"
+        >
+          meus cartões
+        </Text>
+      </View>
+    </View>
+    <View
+      marginBottom={16}
+      marginLeft={24}
+      marginRight={16}
+      style={
+        {
+          "alignItems": "flex-start",
+          "alignSelf": "stretch",
+          "backgroundColor": "#142995",
+          "flexDirection": "column",
+          "justifyContent": "flex-start",
+          "marginBottom": 16,
+          "marginLeft": 24,
+          "marginRight": 16,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "alignSelf": "stretch",
+            "backgroundColor": "#A5FF32",
+            "borderBottomLeftRadius": 12,
+            "borderBottomRightRadius": 12,
+            "borderTopLeftRadius": 12,
+            "borderTopRightRadius": 12,
+            "height": 54,
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+        testID="register-testid"
+      >
+        <Text
+          backgroundColor="tertiary"
+          fullWidth={true}
+          onPress={[Function]}
+          style={
+            {
+              "backgroundColor": "#A5FF32",
+              "color": "#142995",
+              "fontFamily": "PTSans-Regular",
+              "fontSize": 18,
+              "fontWeight": "100",
+            }
+          }
+          suppressHighlighting={true}
+          testIDButton="register-testid"
+          textButton="cadastrar cartão"
+        >
+          cadastrar cartão
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -32,6 +32,7 @@ const RegisterConfirmationScreen = ({ navigation }: RootStackScreenProps<'Regist
             />
             <Wrapper alignItems="center" marginLeft={30} marginRight={30} marginTop={theme.spacesNumber.large}>
                 <ButtonComponent
+                    testIDButton="moving-forward"
                     onPress={handleNavigation}
                     fullWidth
                     backgroundColor='secondary'

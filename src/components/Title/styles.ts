@@ -12,7 +12,6 @@ export const TitleContainer = styled.Text<TitleProps>`
   color: ${(props) => (props.color ? props.color : theme.colors.black)};
   font-size: ${(props) =>
     props.type === "topPage" ? theme.fontSize.titlePage : theme.fontSize.title};
-  margin-bottom: ${(props) =>
-    props.marginBottom ? props.theme.spaces.large : 0};
+  margin-bottom: ${(props) => (props.marginBottom ? theme.spaces.large : 0)};
   font-family: ${theme.fonts.family.regular};
 `

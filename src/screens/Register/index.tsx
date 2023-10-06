@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Masks } from 'react-native-mask-input';
 
-import theme, { ContainerMainPage } from '../../global/styles/theme';
+import theme from '../../global/styles/theme';
 import { saveApiData } from '../../service/api';
 import { RootStackScreenProps } from '../../@types/navigation';
 import { ControlledInput } from '../../components/ControlledInput';
@@ -17,6 +17,7 @@ import { cvvMask } from '../../helpers/customMasks';
 import { PhotoIconSVG } from '../../assets/svgs';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '../../@types/card';
+import { ContainerMainPage } from '../../global/styles/default.styles';
 
 const cardSchema = yup.object({
     id: yup

@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "json-server": "json-server --watch db.json",
-    "test": "jest"
+    "test": "jest",
+    "adb": "adb reverse tcp:9090 tcp:9090 && adb reverse tcp:3000 tcp:3000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:8081 tcp:8081 && adb reverse tcp:8097 tcp:8097"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",
@@ -46,8 +47,11 @@
     "@babel/runtime": "^7.20.0",
     "@react-native/eslint-config": "^0.72.2",
     "@react-native/metro-config": "^0.72.11",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^12.3.0",
     "@tsconfig/react-native": "^3.0.0",
     "@types/": "react-navigation/native",
+    "@types/jest": "^29.5.5",
     "@types/react": "^18.0.24",
     "@types/react-native-vector-icons": "^6.4.15",
     "@types/react-test-renderer": "^18.0.0",

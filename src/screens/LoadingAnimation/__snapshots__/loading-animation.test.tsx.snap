@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyCards should render mycards screen 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#142995",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "justifyContent": "center",
+      "paddingTop": 17,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      animatedStyle={
+        {
+          "value": {
+            "left": -900,
+            "top": -3000,
+          },
+        }
+      }
+      collapsable={false}
+      style={
+        {
+          "backgroundColor": "rgba(238, 238, 238, .2)",
+          "borderRadius": 50,
+          "height": 900,
+          "left": -900,
+          "position": "absolute",
+          "top": -3000,
+          "transform": [
+            {
+              "rotate": "55deg",
+            },
+          ],
+          "width": 900,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "height": 0,
+          "justifyContent": "center",
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "width": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight="50"
+        bbWidth="50"
+        fill="transparent"
+        focusable={false}
+        height={50}
+        id="wallet"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "flex": 0,
+              "height": 50,
+              "width": 50,
+            },
+          ]
+        }
+        vbHeight={52}
+        vbWidth={52}
+        width={50}
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 0,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        >
+          <RNSVGPath
+            d="M45.4444 51H6.55556C5.08213 51 3.66905 50.4147 2.62718 49.3728C1.58532 48.3309 1 46.9179 1 45.4444V6.55556C1 5.08213 1.58532 3.66905 2.62718 2.62718C3.66905 1.58532 5.08213 1 6.55556 1H45.4444C46.9179 1 48.3309 1.58532 49.3728 2.62718C50.4147 3.66905 51 5.08213 51 6.55556V45.4444C51 46.9179 50.4147 48.3309 49.3728 49.3728C48.3309 50.4147 46.9179 51 45.4444 51Z"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              [
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            stroke={
+              {
+                "payload": 4279419625,
+                "type": 0,
+              }
+            }
+            strokeWidth="2"
+          />
+          <RNSVGPath
+            d="M1 34.3333H18.7778C19.6972 34.3333 20.4583 35.1056 20.8611 35.9333C21.4333 37.1083 22.7889 38.5 26 38.5C29.2111 38.5 30.5667 37.1111 31.1389 35.9333C31.5417 35.1056 32.3028 34.3333 33.2222 34.3333H51M1 12.1111H51M1 23.2222H51"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              [
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            stroke={
+              {
+                "payload": 4279419625,
+                "type": 0,
+              }
+            }
+            strokeWidth="2"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
+    <View
+      animatedStyle={
+        {
+          "value": {
+            "bottom": -3000,
+            "right": -900,
+          },
+        }
+      }
+      collapsable={false}
+      style={
+        {
+          "backgroundColor": "rgba(238, 238, 238, .2)",
+          "borderRadius": 50,
+          "bottom": -3000,
+          "height": 900,
+          "position": "absolute",
+          "right": -900,
+          "transform": [
+            {
+              "rotate": "55deg",
+            },
+          ],
+          "width": 900,
+        }
+      }
+    />
+  </View>
+</View>
+`;

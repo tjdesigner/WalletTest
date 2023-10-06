@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert, Text } from 'react-native';
 import theme from '../../global/styles/theme';
 import { RootStackScreenProps } from '../../@types/navigation';
 import { getApiData } from '../../service/api';
@@ -10,34 +10,31 @@ import ScreenDefault from '../../components/templates/ScreenDefault';
 import { CARD_NAME } from '../../helpers/constants';
 import { ButtonComponent } from '../../components';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
-import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '../../@types/card';
-import { getCardState } from '../../redux/features/store';
-import { fetchCards } from '../../redux/features/card/card-slice';
 
 const MyCardsScreen = ({
     navigation,
 }: RootStackScreenProps<'MyCards'>) => {
     const [data, setData] = useState<Card[]>([]);
-    const cards = useSelector(fetchCards)
 
     const getData = useCallback(async () => {
         let fetchData = await getApiData()
-        setData(await fetchData)
+        setData(fetchData)
     }, [getApiData, setData])
 
     let isExpanded = useSharedValue(false)
 
     useEffect(() => {
         getData()
-    }, [cards]);
+    }, [data]);
 
 
     const handleCardSelect = () => {
         Alert.alert('Cartão selecionado com sucesso!', 'Boas compras! =)', [
             {
-                text: 'texto botao',
+                text: 'Entendi',
                 onPress: () => isExpanded.value = !isExpanded.value
+
             }
         ])
     }
@@ -76,6 +73,7 @@ const MyCardsScreen = ({
                         marginTop={showHeightScreen * .7}
                     >
                         <ButtonComponent
+                            testIDButton='select-card-testid'
                             onPress={handleCardSelect}
                             fullWidth
                             textButton={"pagar com esse cartão"}
@@ -104,6 +102,7 @@ const MyCardsScreen = ({
                             marginTop={showHeightScreen * .3}
                         >
                             <ButtonComponent
+                                testIDButton='add-fist-card-testid'
                                 onPress={handleAddFirstCard}
                                 fullWidth
                                 textButton={"Adicionar cartão"}
